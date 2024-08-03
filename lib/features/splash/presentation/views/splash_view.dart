@@ -27,7 +27,7 @@ class _SplashViewState extends State<SplashView> {
 
   void navigateToProperDestination() {
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () => Navigator.pushReplacementNamed(context, OnboardingView.routeName),
     );
   }

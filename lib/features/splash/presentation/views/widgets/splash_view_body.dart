@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_hub/core/constants/images/assets.gen.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
@@ -16,8 +17,11 @@ class SplashViewBody extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: SvgPicture.asset(Assets.images.splash.plantOnboard.path),
         ),
-        SvgPicture.asset(Assets.images.splash.fruitHubSplash.path),
-        SvgPicture.asset(Assets.images.splash.bottomCirclesOnboard.path, fit: BoxFit.fill),
+        SvgPicture(AssetBytesLoader(Assets.images.splash.fruitHubSplashSvg.path)),
+        SvgPicture(
+          AssetBytesLoader(Assets.images.splash.bottomCirclesOnboardSvg.path),
+          fit: BoxFit.fill,
+        ),
       ],
     );
   }

@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruits_hub/features/onboarding/models/page_content.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
-class OnBoardingPageContent extends StatelessWidget {
-  const OnBoardingPageContent({
+class OnBoardingPage extends StatelessWidget {
+  const OnBoardingPage({
     super.key,
-    required this.title,
-    required this.subTitle,
-    required this.image,
-    required this.bgImage,
+    required this.pageContent,
   });
 
-  final String image, bgImage;
-  final Widget title;
-  final Widget? subTitle;
+  final OnBoardingPageContent pageContent;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          width: double.infinity,
-          height: MediaQuery.sizeOf(context).height * 0.6,
+          height: MediaQuery.sizeOf(context).height * .5,
+          width: MediaQuery.sizeOf(context).width,
           child: Stack(
             children: [
-              Positioned.fill(
-                child: SvgPicture.asset(bgImage, fit: BoxFit.fill),
-              ),
+              if (pageContent.backgroundImage != null)
+                Positioned.fill(
+                  child: SvgPicture(
+                    AssetBytesLoader(pageContent.backgroundImage!),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               Positioned(
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SvgPicture.asset(image),
+                child: SvgPicture(AssetBytesLoader(pageContent.image)),
               ),
               const Padding(
                 padding: EdgeInsets.all(16.0),
@@ -43,11 +44,11 @@ class OnBoardingPageContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 54),
-        title,
+        pageContent.title,
         const SizedBox(height: 16),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: subTitle ?? const SizedBox.shrink(),
+          child: pageContent.subTitle ?? const SizedBox.shrink(),
         ),
       ],
     );
