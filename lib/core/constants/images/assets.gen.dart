@@ -15,25 +15,74 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/bottom_circles_onboard.svg
-  SvgGenImage get bottomCirclesOnboard =>
-      const SvgGenImage('assets/images/bottom_circles_onboard.svg');
+  /// Directory path: assets/images/logos
+  $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
 
-  /// File path: assets/images/fruit_hub_splash.svg
-  SvgGenImage get fruitHubSplash =>
-      const SvgGenImage('assets/images/fruit_hub_splash.svg');
+  /// Directory path: assets/images/onboarding
+  $AssetsImagesOnboardingGen get onboarding =>
+      const $AssetsImagesOnboardingGen();
 
-  /// File path: assets/images/plant_onboard.svg
-  SvgGenImage get plantOnboard =>
-      const SvgGenImage('assets/images/plant_onboard.svg');
+  /// Directory path: assets/images/splash
+  $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
+}
 
-  /// File path: assets/images/store_logo.png
+class $AssetsImagesLogosGen {
+  const $AssetsImagesLogosGen();
+
+  /// File path: assets/images/logos/store_logo.png
   AssetGenImage get storeLogo =>
-      const AssetGenImage('assets/images/store_logo.png');
+      const AssetGenImage('assets/images/logos/store_logo.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [bottomCirclesOnboard, fruitHubSplash, plantOnboard, storeLogo];
+  List<AssetGenImage> get values => [storeLogo];
+}
+
+class $AssetsImagesOnboardingGen {
+  const $AssetsImagesOnboardingGen();
+
+  /// File path: assets/images/onboarding/onboarding_fruit_basket_image.svg
+  SvgGenImage get onboardingFruitBasketImage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_fruit_basket_image.svg');
+
+  /// File path: assets/images/onboarding/onboarding_pineapple_image.svg
+  SvgGenImage get onboardingPineappleImage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_pineapple_image.svg');
+
+  /// File path: assets/images/onboarding/onboarding_shape1_backgroundimage.svg
+  SvgGenImage get onboardingShape1Backgroundimage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_shape1_backgroundimage.svg');
+
+  /// File path: assets/images/onboarding/onboarding_shape2_backgroundimage.svg
+  SvgGenImage get onboardingShape2Backgroundimage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_shape2_backgroundimage.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        onboardingFruitBasketImage,
+        onboardingPineappleImage,
+        onboardingShape1Backgroundimage,
+        onboardingShape2Backgroundimage
+      ];
+}
+
+class $AssetsImagesSplashGen {
+  const $AssetsImagesSplashGen();
+
+  /// File path: assets/images/splash/bottom_circles_onboard.svg
+  SvgGenImage get bottomCirclesOnboard =>
+      const SvgGenImage('assets/images/splash/bottom_circles_onboard.svg');
+
+  /// File path: assets/images/splash/fruit_hub_splash.svg
+  SvgGenImage get fruitHubSplash =>
+      const SvgGenImage('assets/images/splash/fruit_hub_splash.svg');
+
+  /// File path: assets/images/splash/plant_onboard.svg
+  SvgGenImage get plantOnboard =>
+      const SvgGenImage('assets/images/splash/plant_onboard.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values =>
+      [bottomCirclesOnboard, fruitHubSplash, plantOnboard];
 }
 
 class Assets {

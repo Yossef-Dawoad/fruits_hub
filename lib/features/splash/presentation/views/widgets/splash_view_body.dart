@@ -11,12 +11,13 @@ class SplashViewBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        //TODO: Test Locale effect on Alignment Proprety
         Align(
           alignment: Alignment.topLeft,
-          child: SvgPicture.asset(Assets.images.plantOnboard.path),
+          child: SvgPicture.asset(Assets.images.splash.plantOnboard.path),
         ),
-        SvgPicture.asset(Assets.images.fruitHubSplash.path),
-        SvgPicture.asset(Assets.images.bottomCirclesOnboard.path, fit: BoxFit.fill),
+        SvgPicture.asset(Assets.images.splash.fruitHubSplash.path),
+        SvgPicture.asset(Assets.images.splash.bottomCirclesOnboard.path, fit: BoxFit.fill),
       ],
     );
   }
