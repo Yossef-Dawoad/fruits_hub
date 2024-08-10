@@ -7,9 +7,11 @@ class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({
     super.key,
     required this.pageContent,
+    required this.pageIndex,
   });
 
   final OnBoardingPageContent pageContent;
+  final int pageIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,14 @@ class OnBoardingPage extends StatelessWidget {
                 right: 0,
                 child: SvgPicture(AssetBytesLoader(pageContent.image)),
               ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
-                  'تـخط',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              Visibility(
+                visible: pageIndex == 0,
+                child: const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text(
+                    'تـخط',
+                    // style: TextStyle(fontSize: 20),
+                  ),
                 ),
               )
             ],

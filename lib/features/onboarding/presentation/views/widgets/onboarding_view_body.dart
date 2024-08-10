@@ -13,7 +13,7 @@ class OnboardingViewBody extends StatefulWidget {
 }
 
 class _OnboardingViewBodyState extends State<OnboardingViewBody> {
-  final _pageController = PageController();
+  late final PageController _pageController;
   int _currentPageIndex = 0;
 
   @override
@@ -27,7 +27,10 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             controller: _pageController,
             onPageChanged: _updatePageIndicator,
             itemCount: onBoardingPages.length,
-            itemBuilder: (ctx, i) => OnBoardingPage(pageContent: onBoardingPages[i]),
+            itemBuilder: (ctx, i) => OnBoardingPage(
+              pageContent: onBoardingPages[i],
+              pageIndex: _currentPageIndex,
+            ),
           ),
         ),
         Indicator(
@@ -36,11 +39,16 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           dotHeight: 14,
         ),
         const SizedBox(height: 16),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Constants.kBottomPadding),
-          child: GenericButton(
-            onPressed: () {},
-            text: 'ابدأ الآن',
+        AnimatedOpacity(
+          duration: const Duration(milliseconds: 500),
+          opacity: _isLastPage ? 1 : 0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Constants.kBottomPadding),
+            child: GenericButton(
+              onPressed: () {},
+              text: 'ابدأ الآن',
+              width: double.infinity,
+            ),
           ),
         ),
         const SizedBox(height: 40),
@@ -48,7 +56,21 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
     );
   }
 
+  bool get _isLastPage => _currentPageIndex == onBoardingPages.length - 1;
+
   void _updatePageIndicator(int index) {
     setState(() => _currentPageIndex = index);
+  }
+
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }
