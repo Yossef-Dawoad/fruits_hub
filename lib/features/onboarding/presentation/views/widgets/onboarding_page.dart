@@ -37,11 +37,11 @@ class OnBoardingPage extends StatelessWidget {
               ),
               Visibility(
                 visible: pageIndex == 0,
-                child: const Padding(
-                  padding: EdgeInsets.all(16.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Text(
                     'تـخط',
-                    // style: TextStyle(fontSize: 20),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
               )
@@ -49,11 +49,17 @@ class OnBoardingPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 54),
-        pageContent.title,
+        DefaultTextStyle(
+          style: Theme.of(context).textTheme.headlineMedium!,
+          child: pageContent.title,
+        ),
         const SizedBox(height: 16),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: pageContent.subTitle ?? const SizedBox.shrink(),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: DefaultTextStyle(
+            style: Theme.of(context).textTheme.bodyLarge!,
+            child: pageContent.subTitle ?? const SizedBox.shrink(),
+          ),
         ),
       ],
     );

@@ -20,7 +20,6 @@ List<OnBoardingPageContent> onBoardingPages = [
     image: Assets.images.onboarding.onboardingFruitBasketImageSvg.path,
     backgroundImage: Assets.images.onboarding.onboardingShape1BackgroundimageSvg.path,
     title: const Text.rich(
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
       TextSpan(
         text: 'مرحبًا بك في',
         children: [
