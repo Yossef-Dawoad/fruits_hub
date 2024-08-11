@@ -21,7 +21,7 @@ List<OnBoardingPageContent> onBoardingPages = [
     backgroundImage: Assets.images.onboarding.onboardingShape1BackgroundimageSvg.path,
     title: const Text.rich(
       TextSpan(
-        text: 'مرحبًا بك في',
+        text: ' مرحبًا بك في',
         children: [
           TextSpan(text: 'Fruit', style: TextStyle(color: Colors.black)),
           TextSpan(text: 'Hub', style: TextStyle(color: Colors.orange)),

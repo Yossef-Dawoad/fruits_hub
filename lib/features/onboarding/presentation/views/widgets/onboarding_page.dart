@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/models/page_content.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -37,11 +38,11 @@ class OnBoardingPage extends StatelessWidget {
               ),
               Visibility(
                 visible: pageIndex == 0,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'تـخط',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                child: GestureDetector(
+                  onTap: () => Navigator.of(context).pushReplacementNamed(LoginView.routeName),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text('تـخط', style: Theme.of(context).textTheme.bodyMedium),
                   ),
                 ),
               )

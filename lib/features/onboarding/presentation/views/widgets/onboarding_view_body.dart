@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/common/services/local_storage/prefs_keys.dart';
+import 'package:fruits_hub/core/common/services/local_storage/shared_prefs_helper.dart';
 import 'package:fruits_hub/core/common/widgets/generic_button.dart';
 import 'package:fruits_hub/core/constants/constants.dart';
+import 'package:fruits_hub/core/dependency_injection/di.dart';
+import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/models/page_content.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/widgets/onboarding_page.dart';
 import 'indicator.dart';
@@ -45,7 +49,12 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: Constants.kBottomPadding),
             child: GenericButton(
-              onPressed: () {},
+              onPressed: () async {
+                await sl<SharedPrefHelper>().setData(PrefsKeys.isOnBoardingSeen, true);
+                if (context.mounted) {
+                  Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+                }
+              },
               text: 'ابدأ الآن',
               width: double.infinity,
             ),
