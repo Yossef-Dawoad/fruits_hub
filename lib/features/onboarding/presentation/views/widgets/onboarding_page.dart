@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/models/page_content.dart';
 import 'package:vector_graphics/vector_graphics.dart';
@@ -25,8 +24,8 @@ class OnBoardingPage extends StatelessWidget {
             children: [
               if (pageContent.backgroundImage != null)
                 Positioned.fill(
-                  child: SvgPicture(
-                    AssetBytesLoader(pageContent.backgroundImage!),
+                  child: VectorGraphic(
+                    loader: AssetBytesLoader(pageContent.backgroundImage!),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -34,7 +33,7 @@ class OnBoardingPage extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SvgPicture(AssetBytesLoader(pageContent.image)),
+                child: VectorGraphic(loader: AssetBytesLoader(pageContent.image)),
               ),
               Visibility(
                 visible: pageIndex == 0,

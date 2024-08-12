@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 
-class GenericButton extends StatelessWidget {
-  const GenericButton({
+class GenericElevatedButton extends StatelessWidget {
+  const GenericElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -20,9 +20,10 @@ class GenericButton extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: TextButton(
-        style: TextButton.styleFrom(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
           backgroundColor: Palette.primary,
+          shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         onPressed: onPressed,
         child: Text(

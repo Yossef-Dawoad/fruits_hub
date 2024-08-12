@@ -48,7 +48,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           opacity: _isLastPage ? 1 : 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: Constants.kBottomPadding),
-            child: GenericButton(
+            child: GenericElevatedButton(
               onPressed: () async {
                 await sl<SharedPrefHelper>().setData(PrefsKeys.isOnBoardingSeen, true);
                 if (context.mounted) {

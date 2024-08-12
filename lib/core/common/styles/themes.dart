@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/common/styles/widget_prop_theme/border_styles.dart';
 
 import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 
@@ -16,6 +17,7 @@ class CustomTheme {
       brightness: Brightness.light,
     ),
     textTheme: CustomTextThemes.lightTextTheme,
+    inputDecorationTheme: CustomBorderThemes.customInputDecorationLightTheme(),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -28,5 +30,6 @@ class CustomTheme {
       brightness: Brightness.dark,
     ),
     textTheme: CustomTextThemes.darkTextTheme,
+    inputDecorationTheme: CustomBorderThemes.customInputDecorationDarkTheme(),
   );
 }

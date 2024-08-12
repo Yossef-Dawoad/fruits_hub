@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_hub/core/constants/images/assets.gen.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -15,11 +14,15 @@ class SplashViewBody extends StatelessWidget {
         //TODO: Test Locale effect on Alignment Proprety
         Align(
           alignment: Alignment.topLeft,
-          child: SvgPicture.asset(Assets.images.splash.plantOnboard.path),
+          child: VectorGraphic(
+            loader: AssetBytesLoader(Assets.images.splash.plantOnboardSvg.path),
+          ),
         ),
-        SvgPicture(AssetBytesLoader(Assets.images.splash.fruitHubSplashSvg.path)),
-        SvgPicture(
-          AssetBytesLoader(Assets.images.splash.bottomCirclesOnboardSvg.path),
+        VectorGraphic(
+          loader: AssetBytesLoader(Assets.images.splash.fruitHubSplashSvg.path),
+        ),
+        VectorGraphic(
+          loader: AssetBytesLoader(Assets.images.splash.bottomCirclesOnboardSvg.path),
           fit: BoxFit.fill,
         ),
       ],
