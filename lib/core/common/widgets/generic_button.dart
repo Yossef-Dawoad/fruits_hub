@@ -6,7 +6,7 @@ class GenericElevatedButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.height,
+    this.height = 56,
     this.width,
   });
 

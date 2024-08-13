@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
+import 'package:fruits_hub/features/authentication/presentation/view/signup_view.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 
@@ -8,6 +9,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     SplashView.routeName => MaterialPageRoute(builder: (_) => const SplashView()),
     OnboardingView.routeName => MaterialPageRoute(builder: (_) => const OnboardingView()),
     LoginView.routeName => MaterialPageRoute(builder: (_) => const LoginView()),
+    SignupView.routeName => MaterialPageRoute(builder: (_) => const SignupView()),
     _ => MaterialPageRoute(builder: (_) => const Scaffold()),
   };
 }
