@@ -4,13 +4,13 @@ import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 class GenericElevatedButton extends StatelessWidget {
   const GenericElevatedButton({
     super.key,
-    required this.text,
+    required this.child,
     required this.onPressed,
     this.height = 56,
     this.width,
   });
 
-  final String text;
+  final Widget? child;
   final double? height;
   final double? width;
   final VoidCallback onPressed;
@@ -26,10 +26,7 @@ class GenericElevatedButton extends StatelessWidget {
           shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white),
-        ),
+        child: child,
       ),
     );
   }

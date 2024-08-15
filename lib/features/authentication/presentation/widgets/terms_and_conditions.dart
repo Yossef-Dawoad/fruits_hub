@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 
 class TermsAndConditions extends StatefulWidget {
-  const TermsAndConditions({super.key});
+  const TermsAndConditions({
+    super.key,
+    required this.onAccept,
+  });
+  final ValueChanged<bool> onAccept;
 
   @override
   State<TermsAndConditions> createState() => _TermsAndConditionsState();
@@ -25,7 +29,9 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               ),
               value: isTermAccepted,
               onChanged: (value) {
-                setState(() => isTermAccepted = value!);
+                isTermAccepted = value!;
+                widget.onAccept(isTermAccepted);
+                setState(() {});
               },
             ),
           ),

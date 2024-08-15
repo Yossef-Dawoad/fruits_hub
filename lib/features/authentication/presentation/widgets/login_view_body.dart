@@ -32,9 +32,9 @@ class LoginViewBody extends StatelessWidget {
             const DidYouForgetPassword(),
             const SizedBox(height: 16),
             GenericElevatedButton(
-              text: 'تسجيل الدخول',
               width: double.infinity,
               onPressed: () {},
+              child: const Text('تسجيل الدخول', style: TextStyle(color: Colors.white)),
             ),
             const SizedBox(height: 22),
             const DontYouHaveAcc(),

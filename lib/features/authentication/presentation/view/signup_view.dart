@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/dependency_injection/di.dart';
+import 'package:fruits_hub/features/authentication/presentation/blocs/signup/signup_bloc.dart';
 
 import '../widgets/signup_view_body.dart';
 
@@ -10,7 +13,10 @@ class SignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildSignupAppBar(context),
-      body: const SignupViewBody(),
+      body: BlocProvider(
+        create: (context) => sl<SignupBloc>(),
+        child: const SignupViewBody(),
+      ),
     );
   }
 

@@ -19,7 +19,8 @@ class $AssetsImagesGen {
   $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
 
   /// Directory path: assets/images/onboarding
-  $AssetsImagesOnboardingGen get onboarding => const $AssetsImagesOnboardingGen();
+  $AssetsImagesOnboardingGen get onboarding =>
+      const $AssetsImagesOnboardingGen();
 
   /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
@@ -29,26 +30,32 @@ class $AssetsImagesLogosGen {
   const $AssetsImagesLogosGen();
 
   /// File path: assets/images/logos/apple_logo.svg
-  SvgGenImage get appleLogo => const SvgGenImage('assets/images/logos/apple_logo.svg');
+  SvgGenImage get appleLogo =>
+      const SvgGenImage('assets/images/logos/apple_logo.svg');
 
   /// File path: assets/images/logos/apple_logo.svg.vec
-  SvgGenImage get appleLogoSvg => const SvgGenImage.vec('assets/images/logos/apple_logo.svg.vec');
+  SvgGenImage get appleLogoSvg =>
+      const SvgGenImage.vec('assets/images/logos/apple_logo.svg.vec');
 
   /// File path: assets/images/logos/facebook_logo.svg
-  SvgGenImage get facebookLogo => const SvgGenImage('assets/images/logos/facebook_logo.svg');
+  SvgGenImage get facebookLogo =>
+      const SvgGenImage('assets/images/logos/facebook_logo.svg');
 
   /// File path: assets/images/logos/facebook_logo.svg.vec
   SvgGenImage get facebookLogoSvg =>
       const SvgGenImage.vec('assets/images/logos/facebook_logo.svg.vec');
 
   /// File path: assets/images/logos/google_logo.svg
-  SvgGenImage get googleLogo => const SvgGenImage('assets/images/logos/google_logo.svg');
+  SvgGenImage get googleLogo =>
+      const SvgGenImage('assets/images/logos/google_logo.svg');
 
   /// File path: assets/images/logos/google_logo.svg.vec
-  SvgGenImage get googleLogoSvg => const SvgGenImage.vec('assets/images/logos/google_logo.svg.vec');
+  SvgGenImage get googleLogoSvg =>
+      const SvgGenImage.vec('assets/images/logos/google_logo.svg.vec');
 
   /// File path: assets/images/logos/store_logo.png
-  AssetGenImage get storeLogo => const AssetGenImage('assets/images/logos/store_logo.png');
+  AssetGenImage get storeLogo =>
+      const AssetGenImage('assets/images/logos/store_logo.png');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -66,36 +73,36 @@ class $AssetsImagesOnboardingGen {
   const $AssetsImagesOnboardingGen();
 
   /// File path: assets/images/onboarding/onboarding_fruit_basket_image.svg
-  SvgGenImage get onboardingFruitBasketImage =>
-      const SvgGenImage('assets/images/onboarding/onboarding_fruit_basket_image.svg');
+  SvgGenImage get onboardingFruitBasketImage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_fruit_basket_image.svg');
 
   /// File path: assets/images/onboarding/onboarding_fruit_basket_image.svg.vec
-  SvgGenImage get onboardingFruitBasketImageSvg =>
-      const SvgGenImage.vec('assets/images/onboarding/onboarding_fruit_basket_image.svg.vec');
+  SvgGenImage get onboardingFruitBasketImageSvg => const SvgGenImage.vec(
+      'assets/images/onboarding/onboarding_fruit_basket_image.svg.vec');
 
   /// File path: assets/images/onboarding/onboarding_pineapple_image.svg
-  SvgGenImage get onboardingPineappleImage =>
-      const SvgGenImage('assets/images/onboarding/onboarding_pineapple_image.svg');
+  SvgGenImage get onboardingPineappleImage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_pineapple_image.svg');
 
   /// File path: assets/images/onboarding/onboarding_pineapple_image.svg.vec
-  SvgGenImage get onboardingPineappleImageSvg =>
-      const SvgGenImage.vec('assets/images/onboarding/onboarding_pineapple_image.svg.vec');
+  SvgGenImage get onboardingPineappleImageSvg => const SvgGenImage.vec(
+      'assets/images/onboarding/onboarding_pineapple_image.svg.vec');
 
   /// File path: assets/images/onboarding/onboarding_shape1_backgroundimage.svg
-  SvgGenImage get onboardingShape1Backgroundimage =>
-      const SvgGenImage('assets/images/onboarding/onboarding_shape1_backgroundimage.svg');
+  SvgGenImage get onboardingShape1Backgroundimage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_shape1_backgroundimage.svg');
 
   /// File path: assets/images/onboarding/onboarding_shape1_backgroundimage.svg.vec
-  SvgGenImage get onboardingShape1BackgroundimageSvg =>
-      const SvgGenImage.vec('assets/images/onboarding/onboarding_shape1_backgroundimage.svg.vec');
+  SvgGenImage get onboardingShape1BackgroundimageSvg => const SvgGenImage.vec(
+      'assets/images/onboarding/onboarding_shape1_backgroundimage.svg.vec');
 
   /// File path: assets/images/onboarding/onboarding_shape2_backgroundimage.svg
-  SvgGenImage get onboardingShape2Backgroundimage =>
-      const SvgGenImage('assets/images/onboarding/onboarding_shape2_backgroundimage.svg');
+  SvgGenImage get onboardingShape2Backgroundimage => const SvgGenImage(
+      'assets/images/onboarding/onboarding_shape2_backgroundimage.svg');
 
   /// File path: assets/images/onboarding/onboarding_shape2_backgroundimage.svg.vec
-  SvgGenImage get onboardingShape2BackgroundimageSvg =>
-      const SvgGenImage.vec('assets/images/onboarding/onboarding_shape2_backgroundimage.svg.vec');
+  SvgGenImage get onboardingShape2BackgroundimageSvg => const SvgGenImage.vec(
+      'assets/images/onboarding/onboarding_shape2_backgroundimage.svg.vec');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -118,18 +125,20 @@ class $AssetsImagesSplashGen {
       const SvgGenImage('assets/images/splash/bottom_circles_onboard.svg');
 
   /// File path: assets/images/splash/bottom_circles_onboard.svg.vec
-  SvgGenImage get bottomCirclesOnboardSvg =>
-      const SvgGenImage.vec('assets/images/splash/bottom_circles_onboard.svg.vec');
+  SvgGenImage get bottomCirclesOnboardSvg => const SvgGenImage.vec(
+      'assets/images/splash/bottom_circles_onboard.svg.vec');
 
   /// File path: assets/images/splash/fruit_hub_splash.svg
-  SvgGenImage get fruitHubSplash => const SvgGenImage('assets/images/splash/fruit_hub_splash.svg');
+  SvgGenImage get fruitHubSplash =>
+      const SvgGenImage('assets/images/splash/fruit_hub_splash.svg');
 
   /// File path: assets/images/splash/fruit_hub_splash.svg.vec
   SvgGenImage get fruitHubSplashSvg =>
       const SvgGenImage.vec('assets/images/splash/fruit_hub_splash.svg.vec');
 
   /// File path: assets/images/splash/plant_onboard.svg
-  SvgGenImage get plantOnboard => const SvgGenImage('assets/images/splash/plant_onboard.svg');
+  SvgGenImage get plantOnboard =>
+      const SvgGenImage('assets/images/splash/plant_onboard.svg');
 
   /// File path: assets/images/splash/plant_onboard.svg.vec
   SvgGenImage get plantOnboardSvg =>
@@ -298,7 +307,8 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      colorFilter: colorFilter ?? (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
+      colorFilter: colorFilter ??
+          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,
       cacheColorFilter: cacheColorFilter,
     );

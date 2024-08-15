@@ -55,8 +55,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                   Navigator.of(context).pushReplacementNamed(LoginView.routeName);
                 }
               },
-              text: 'ابدأ الآن',
               width: double.infinity,
+              child: const Text('ابدأ الآن', style: TextStyle(color: Colors.white)),
             ),
           ),
         ),

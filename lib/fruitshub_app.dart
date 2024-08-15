@@ -27,6 +27,15 @@ class FruitsHubApp extends StatelessWidget {
       title: 'Fruits Hub',
       onGenerateRoute: generateRoute,
       initialRoute: SplashView.routeName,
+      // builder: (context, child) {
+      //   Widget error = const Text('...rendering error...');
+      //   if (child is Scaffold || child is Navigator) {
+      //     error = Scaffold(body: Center(child: error));
+      //   }
+      //   ErrorWidget.builder = (errorDetails) => error;
+      //   if (child != null) return child;
+      //   throw StateError('widget is null');
+      // },
     );
   }
 }
