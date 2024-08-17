@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
 import 'package:fruits_hub/core/common/types/errors.dart';
 import 'package:fruits_hub/core/common/types/exceptions.dart';
@@ -15,10 +14,21 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   AuthenticationRepositoryImpl(this.authService);
 
   @override
-  Future<Result<UserEntity>> signInWithEmailAndPassword(
-      {required String email, required String password}) {
-    // TODO: implement signInWithEmailAndPassword
-    throw UnimplementedError();
+  Future<Result<UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final user = await authService.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return Right(UserModel.fromFirebaseUser(user));
+    } on AuthException catch (e) {
+      return Left(AuthenticationFailure(message: e.message));
+    } catch (e) {
+      return Left(AuthenticationFailure(message: 'Something went wrong, please try again later.'));
+    }
   }
 
   @override
@@ -38,6 +48,30 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
+      return Right(UserModel.fromFirebaseUser(newUser));
+    } on AuthException catch (e) {
+      return Left(AuthenticationFailure(message: e.message));
+    } catch (e) {
+      return Left(ServerFailure(message: 'Unknown error'));
+    }
+  }
+
+  @override
+  Future<Result<UserEntity>> signInWithGoogle() async {
+    try {
+      final newUser = await authService.signInWithGoogle();
+      return Right(UserModel.fromFirebaseUser(newUser));
+    } on AuthException catch (e) {
+      return Left(AuthenticationFailure(message: e.message));
+    } catch (e) {
+      return Left(ServerFailure(message: 'Unknown error'));
+    }
+  }
+
+  @override
+  Future<Result<UserEntity>> signInWithFacebook() async {
+    try {
+      final newUser = await authService.signInWithFacebook();
       return Right(UserModel.fromFirebaseUser(newUser));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));

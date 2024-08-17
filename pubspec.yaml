@@ -49,10 +49,12 @@ dependencies:
 
   firebase_core: ^3.3.0
   firebase_auth: ^5.1.4
+  google_sign_in: ^6.2.1
 
   dart_mappable: ^4.2.2
   get_it: ^7.7.0
   flutter_bloc: ^8.1.6
+  flutter_facebook_auth: ^7.0.1
 
 
 dev_dependencies:

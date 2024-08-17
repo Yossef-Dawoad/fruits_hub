@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/common/widgets/custom_password_field.dart';
 import 'package:fruits_hub/core/common/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/core/common/widgets/generic_button.dart';
+import 'package:fruits_hub/core/common/widgets/progress_indecators.dart';
 
 import '../blocs/signup/signup_bloc.dart';
 import 'doyou_have_acc.dart';
@@ -29,7 +31,6 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     super.initState();
   }
 
-  bool obsecurePasword = true;
   bool isTermsAccepted = false;
 
   @override
@@ -54,18 +55,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
-              CustomTextFormField(
-                controller: _passwordController,
+              CustomPasswordField(
+                passwordController: _passwordController,
                 hintText: 'ادخل كلمة المرور',
-                suffixIcon: IconButton(
-                  //FIX SetState re-render the entire widget
-                  onPressed: () => setState(() => obsecurePasword = !obsecurePasword),
-                  icon: obsecurePasword
-                      ? const Icon(Icons.remove_red_eye)
-                      : const Icon(Icons.visibility_off),
-                ),
-                // keyboardType: TextInputType.visiblePassword,
-                isObscure: obsecurePasword,
               ),
               const SizedBox(height: 16),
               TermsAndConditions(
@@ -80,7 +72,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                     return switch (state) {
                       SignupInitial() =>
                         const Text('انشاء حساب جديد', style: TextStyle(color: Colors.white)),
-                      SignupLoading() => const Center(child: CircularProgressIndicator()),
+                      SignupLoading() => const BasicProgressIndicator(),
                       SignupSuccess() =>
                         const Text('تم التسجيل بنجاح', style: TextStyle(color: Colors.white)),
                       SignupFailure() =>
@@ -92,8 +84,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               const SizedBox(height: 22),
               const DoYouHaveAcc(),
               BlocListener<SignupBloc, SignupState>(
-                listenWhen: (previous, current) =>
-                    current is SignupSuccess || current is SignupFailure,
+                listenWhen: (prev, curr) => curr is SignupSuccess || curr is SignupFailure,
                 listener: (context, state) => switch (state) {
                   SignupSuccess() => Navigator.of(context).pop(),
                   SignupFailure(message: var msg) => _buildSnackBar(context, msg),
@@ -121,7 +112,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     if (_formKey.currentState!.validate() && isTermsAccepted) {
       _formKey.currentState!.save();
       context.read<SignupBloc>().add(
-            SignupUserCreatedWithEmailAndPassword(
+            SignupEmailWithPasswordEvent(
               _userNmaeController.text,
               _emailController.text,
               _passwordController.text,

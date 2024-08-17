@@ -13,11 +13,11 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   final AuthenticationRepository authRepo;
   SignupBloc(this.authRepo) : super(SignupInitial()) {
     on<SignupEvent>((event, emit) => emit(SignupLoading()));
-    on<SignupUserCreatedWithEmailAndPassword>(_onEmailAndPasswordCreated);
+    on<SignupEmailWithPasswordEvent>(_onEmailAndPasswordCreated);
   }
 
   FutureOr<void> _onEmailAndPasswordCreated(
-    SignupUserCreatedWithEmailAndPassword event,
+    SignupEmailWithPasswordEvent event,
     Emitter<SignupState> emit,
   ) async {
     final result = await authRepo.signUpWithEmailAndPassword(

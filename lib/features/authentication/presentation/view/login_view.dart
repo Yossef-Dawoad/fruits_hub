@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/dependency_injection/di.dart';
 
+import '../blocs/login/login_bloc.dart';
 import '../widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,7 +13,10 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildLoginAppBar(context),
-      body: const LoginViewBody(),
+      body: BlocProvider(
+        create: (context) => sl<LoginBloc>(),
+        child: const LoginViewBody(),
+      ),
     );
   }
 

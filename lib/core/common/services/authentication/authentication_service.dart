@@ -9,5 +9,7 @@ abstract interface class AuthenticationService<UserType> {
     required String password,
   });
 
+  Future<UserType> signInWithGoogle();
+  Future<UserType> signInWithFacebook();
   Future<void> signOut();
 }

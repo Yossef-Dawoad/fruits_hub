@@ -64,6 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '134341891398',
     projectId: 'fruits-hub-x',
     storageBucket: 'fruits-hub-x.appspot.com',
+    androidClientId: '134341891398-48l6cpu2f7gnpmsolq5guujgpbam1rme.apps.googleusercontent.com',
+    iosClientId: '134341891398-89cfgp3bm7ktspamavfarp82hqmlkoh8.apps.googleusercontent.com',
     iosBundleId: 'com.example.fruitsHub',
   );
 
@@ -73,6 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '134341891398',
     projectId: 'fruits-hub-x',
     storageBucket: 'fruits-hub-x.appspot.com',
+    androidClientId: '134341891398-48l6cpu2f7gnpmsolq5guujgpbam1rme.apps.googleusercontent.com',
+    iosClientId: '134341891398-89cfgp3bm7ktspamavfarp82hqmlkoh8.apps.googleusercontent.com',
     iosBundleId: 'com.example.fruitsHub',
   );
 
@@ -85,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'fruits-hub-x.appspot.com',
     measurementId: 'G-SQXW1QSNLL',
   );
+
 }

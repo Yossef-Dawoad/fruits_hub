@@ -14,5 +14,7 @@ abstract interface class AuthenticationRepository {
     required String password,
   });
 
+  Future<Result<UserEntity>> signInWithGoogle();
+  Future<Result<UserEntity>> signInWithFacebook();
   Future<Result<void>> signOut();
 }

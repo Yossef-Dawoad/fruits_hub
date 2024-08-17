@@ -1,5 +1,5 @@
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: true
   ios: true
   remove_alpha_ios: true
   image_path: "assets/images/logos/store_logo.png"
