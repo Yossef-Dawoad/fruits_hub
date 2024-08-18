@@ -3,10 +3,8 @@ import 'package:fruits_hub/core/common/types/errors.dart';
 import 'package:fruits_hub/core/common/types/exceptions.dart';
 import 'package:fruits_hub/core/common/types/result.dart';
 
-import 'package:fruits_hub/features/authentication/domain/entities/user_entity.dart';
-
 import '../../domain/repositories/auth_repo.dart';
-import '../models/user_model.dart';
+import '../models/user_account.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationService authService;
@@ -14,7 +12,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   AuthenticationRepositoryImpl(this.authService);
 
   @override
-  Future<Result<UserEntity>> signInWithEmailAndPassword({
+  Future<Result<UserAccount>> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -23,7 +21,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      return Right(UserAccount.fromFirebaseUser(user));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {
@@ -38,7 +36,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<UserEntity>> signUpWithEmailAndPassword({
+  Future<Result<UserAccount>> signUpWithEmailAndPassword({
     required String name,
     required String email,
     required String password,
@@ -48,7 +46,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(newUser));
+      return Right(UserAccount.fromFirebaseUser(newUser));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {
@@ -57,10 +55,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<UserEntity>> signInWithGoogle() async {
+  Future<Result<UserAccount>> signInWithGoogle() async {
     try {
       final newUser = await authService.signInWithGoogle();
-      return Right(UserModel.fromFirebaseUser(newUser));
+      return Right(UserAccount.fromFirebaseUser(newUser));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {
@@ -69,10 +67,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<UserEntity>> signInWithFacebook() async {
+  Future<Result<UserAccount>> signInWithFacebook() async {
     try {
       final newUser = await authService.signInWithFacebook();
-      return Right(UserModel.fromFirebaseUser(newUser));
+      return Right(UserAccount.fromFirebaseUser(newUser));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {

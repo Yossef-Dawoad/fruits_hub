@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fruits_hub/core/common/types/result.dart';
-import 'package:fruits_hub/features/authentication/domain/entities/user_entity.dart';
+import 'package:fruits_hub/features/authentication/data/models/user_account.dart';
 import 'package:fruits_hub/features/authentication/domain/repositories/auth_repo.dart';
 
 part 'login_event.dart';
