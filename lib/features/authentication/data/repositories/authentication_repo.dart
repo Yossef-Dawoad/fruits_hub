@@ -1,4 +1,5 @@
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
+import 'package:fruits_hub/core/common/services/remote_storage/storage_service.dart';
 import 'package:fruits_hub/core/common/types/errors.dart';
 import 'package:fruits_hub/core/common/types/exceptions.dart';
 import 'package:fruits_hub/core/common/types/result.dart';
@@ -8,11 +9,12 @@ import '../models/user_account.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationService authService;
+  final RemoteNoSqlStorageService remoteLocalService;
 
-  AuthenticationRepositoryImpl(this.authService);
+  AuthenticationRepositoryImpl(this.authService, this.remoteLocalService);
 
   @override
-  Future<Result<UserAccount>> signInWithEmailAndPassword({
+  FutureResult<UserAccount> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -30,9 +32,13 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<void>> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  FutureResult<void> signOut() async {
+    try {
+      await authService.signOut();
+      return const Right(null);
+    } on Exception {
+      return Left(AuthenticationFailure(message: 'Something went wrong, please try again later.'));
+    }
   }
 
   @override
@@ -46,11 +52,18 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
+
+      await remoteLocalService.saveNewRecord(UserAccount.fromFirebaseUser(newUser));
+
       return Right(UserAccount.fromFirebaseUser(newUser));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
+    } on RemoteStorgeException catch (e) {
+      return Left(RemoteStorageFailure(message: e.message));
     } catch (e) {
       return Left(ServerFailure(message: 'Unknown error'));
+    } finally {
+      await authService.signOut();
     }
   }
 
