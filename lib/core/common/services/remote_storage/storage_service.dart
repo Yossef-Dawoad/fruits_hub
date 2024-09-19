@@ -1,9 +1,9 @@
 abstract interface class RemoteNoSqlStorageService<T> {
-  Future<T> addNewItem(T item);
-  Future<T?> getItemById(String itemId);
-  Future<List<T>> getAllItems();
-  Future<void> updateItemById(String id, T item);
-  Future<bool> deleteItem(T item);
+  Future<T> saveNewRecord(T item);
+  Future<T?> getRecordById(String itemId);
+  Future<List<T>> getAllRecords();
+  Future<void> updateRecordById(String id, T item);
+  Future<bool> deleteRecord(T item);
 
   final String collectionName = '';
 }
