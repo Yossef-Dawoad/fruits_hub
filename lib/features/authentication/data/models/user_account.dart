@@ -19,6 +19,7 @@ class UserAccount with UserAccountMappable {
   static const fromMap = UserAccountMapper.fromMap;
   static const fromJson = UserAccountMapper.fromJson;
 
+  factory UserAccount.empty() => const UserAccount('', '', '');
   factory UserAccount.fromFirebaseUser(User user) =>
       UserAccount(user.uid, user.displayName ?? '', user.email ?? '');
 
