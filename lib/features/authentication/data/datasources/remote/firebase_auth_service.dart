@@ -47,9 +47,13 @@ class FirebaseAuthService implements AuthenticationService<User> {
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    try {
+      await authInstanace.signOut();
+    } on Exception catch (err) {
+      _logger.severe('Error in signOut', err);
+      throw AuthException(message: 'Something went wrong, please try again later.');
+    }
   }
 
   @override
