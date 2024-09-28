@@ -47,15 +47,16 @@ dependencies:
   vector_graphics: ^1.1.11+1
   
 
-  firebase_core: ^3.5.0
-  firebase_auth: ^5.3.0
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
   google_sign_in: ^6.2.1
 
   dart_mappable: ^4.2.2
   get_it: ^8.0.0
   flutter_bloc: ^8.1.6
   flutter_facebook_auth: ^7.1.1
-  cloud_firestore: ^5.4.2
+  cloud_firestore: ^5.4.3
+  logging: ^1.2.0
 
 
 dev_dependencies:
@@ -67,13 +68,13 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_launcher_icons: ^0.14.0
+  flutter_launcher_icons: ^0.14.1
 
   build_runner: ^2.4.12
   flutter_gen_runner: 5.7.0
   vector_graphics_compiler: ^1.1.11+1
 
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
   dart_mappable_builder: ^4.2.3
 
 # For information on the generic Dart part of this file, see the
