@@ -23,10 +23,7 @@ class LoginView extends StatelessWidget {
   AppBar _buildLoginAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      leading: IconButton(
-        onPressed: Navigator.of(context).pop,
-        icon: const Icon(Icons.arrow_back_ios),
-      ),
+      automaticallyImplyLeading: false,
       title: Text(
         'تسجيل الدخول',
         textAlign: TextAlign.center,
