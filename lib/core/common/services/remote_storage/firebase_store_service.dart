@@ -38,9 +38,14 @@ class UserFirebaseStoreService implements UserRemoteNoSqlStorageService {
   }
 
   @override
-  Future<UserAccount?> getRecordById(String itemId) {
-    // TODO: implement getItemById
-    throw UnimplementedError();
+  Future<UserAccount?> getRecordById(String itemId) async {
+    try {
+      final item = await db.collection(collectionName).doc(itemId).get();
+      return item.exists ? UserAccount.fromMap(item.data()!) : null;
+    } on Exception catch (err) {
+      _logger.severe(err);
+      throw RemoteStorgeException(message: err.toString());
+    }
   }
 
   @override

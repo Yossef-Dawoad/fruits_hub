@@ -52,18 +52,18 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
+      final userAcc = UserAccount.fromFirebaseUser(newUser).copyWith(name: name);
 
-      await remoteLocalService.saveNewRecord(UserAccount.fromFirebaseUser(newUser));
+      await remoteLocalService.saveNewRecord(userAcc);
 
-      return Right(UserAccount.fromFirebaseUser(newUser));
+      return Right(userAcc);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } on RemoteStorgeException catch (e) {
+      await authService.deleteAccount(); // delete the user from firebase if the user creation fails
       return Left(RemoteStorageFailure(message: e.message));
     } catch (e) {
       return Left(ServerFailure(message: 'Unknown error'));
-    } finally {
-      await authService.signOut();
     }
   }
 
@@ -71,7 +71,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Result<UserAccount>> signInWithGoogle() async {
     try {
       final newUser = await authService.signInWithGoogle();
-      return Right(UserAccount.fromFirebaseUser(newUser));
+      final userAcc = UserAccount.fromFirebaseUser(newUser);
+      final userExists = await remoteLocalService.getRecordById(newUser.id);
+      if (userExists) await remoteLocalService.saveNewRecord(userAcc);
+      return Right(userAcc);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {

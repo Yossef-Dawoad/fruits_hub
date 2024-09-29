@@ -108,6 +108,24 @@ class FirebaseAuthService implements AuthenticationService<User> {
     }
   }
 
+  @override
+  Future<bool> deleteAccount() async {
+    try {
+      final user = authInstanace.currentUser;
+      if (user == null) {
+        _logger.severe(' Error in deleteAccount', 'User retruned is null');
+        throw AuthException(message: 'Something went wrong, please try again later.');
+      }
+      await user.delete();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      throw _handelFirebaseAuthException(e, 'deleteAccount');
+    } catch (err) {
+      _logger.severe('Error in deleteAccount', err);
+      throw AuthException(message: 'Something went wrong, please try again later.');
+    }
+  }
+
   AuthException _handelFirebaseAuthException(FirebaseAuthException e, String methodName) {
     return switch (e.code) {
       'weak-password' => AuthException(message: 'The password provided is too weak.'),
