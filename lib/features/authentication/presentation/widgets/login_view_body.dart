@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/common/widgets/custom_password_field.dart';
@@ -5,6 +7,7 @@ import 'package:fruits_hub/core/common/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/core/common/widgets/generic_button.dart';
 import 'package:fruits_hub/core/common/widgets/progress_indecators.dart';
 import 'package:fruits_hub/features/authentication/presentation/blocs/login/login_bloc.dart';
+import 'package:fruits_hub/features/home/persentaion/views/home.dart';
 
 import 'doyou_forget_password.dart';
 import 'doyou_have_acc.dart';
@@ -81,7 +84,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               BlocListener<LoginBloc, LoginState>(
                 listenWhen: (prev, curr) => curr is LoginSuccess || curr is LoginFailure,
                 listener: (context, state) => switch (state) {
-                  LoginSuccess() => Navigator.of(context).pop(),
+                  LoginSuccess() => _naviateToHome(), // TODO: navigate to home screen
                   LoginFailure(message: var msg) => _buildSnackBar(context, msg),
                   _ => const SizedBox.shrink()
                 },
@@ -99,6 +102,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     String msg,
   ) =>
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+
+  void _naviateToHome() {
+    log('Login Success Navigate to Home');
+    Navigator.pushReplacementNamed(context, HomeView.routeName);
+  }
 
   void _onSignInButtonPressed() {
     if (_formKey.currentState!.validate()) {
