@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
@@ -19,16 +20,17 @@ class SocialLoginButtons extends StatelessWidget {
             ? GenericOutlineButton(
                 width: double.infinity,
                 height: 56,
-                label: 'تسجيل بواسطه ابل',
+                label: Text('تسجيل بواسطه ابل', style: Theme.of(context).textTheme.titleMedium),
                 imagePath: Assets.images.logos.appleLogoSvg.path,
                 onPressed: () {},
               )
             : GenericOutlineButton(
                 width: double.infinity,
                 height: 56,
-                label: 'تسجيل بواسطه جوجل',
+                label: Text('تسجيل بواسطه جوجل', style: Theme.of(context).textTheme.titleMedium),
                 imagePath: Assets.images.logos.googleLogoSvg.path,
                 onPressed: () {
+                  log('Google Signed Pressed');
                   context.read<LoginBloc>().add(LoginWithGoogleRequested());
                 },
               ),
@@ -36,7 +38,7 @@ class SocialLoginButtons extends StatelessWidget {
         GenericOutlineButton(
           width: double.infinity,
           height: 56,
-          label: 'تسجيل بواسطه فيسبوك',
+          label: Text('تسجيل بواسطه فيسبوك', style: Theme.of(context).textTheme.titleMedium),
           imagePath: Assets.images.logos.facebookLogoSvg.path,
           onPressed: () {
             context.read<LoginBloc>().add(LoginWithFacebookRequested());

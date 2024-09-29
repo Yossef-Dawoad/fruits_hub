@@ -12,7 +12,7 @@ class GenericOutlineButton extends StatelessWidget {
   });
 
   final String? imagePath;
-  final String label;
+  final Widget label;
   final VoidCallback onPressed;
   final double? height;
   final double? width;
@@ -26,9 +26,9 @@ class GenericOutlineButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         icon: imagePath != null ? VectorGraphic(loader: AssetBytesLoader(imagePath!)) : null,
-        label: Center(child: Text(label, style: Theme.of(context).textTheme.titleMedium)),
+        label: Center(child: label),
         iconAlignment: IconAlignment.end,
       ),
     );
