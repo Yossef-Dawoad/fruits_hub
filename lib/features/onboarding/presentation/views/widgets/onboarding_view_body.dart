@@ -60,7 +60,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             ),
           ),
         ),
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
       ],
     );
   }
