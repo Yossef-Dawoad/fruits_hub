@@ -22,6 +22,9 @@ class $AssetsImagesGen {
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
 
+  /// Directory path: assets/images/profile
+  $AssetsImagesProfileGen get profile => const $AssetsImagesProfileGen();
+
   /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 }
@@ -115,6 +118,21 @@ class $AssetsImagesOnboardingGen {
         onboardingShape2Backgroundimage,
         onboardingShape2BackgroundimageSvg
       ];
+}
+
+class $AssetsImagesProfileGen {
+  const $AssetsImagesProfileGen();
+
+  /// File path: assets/images/profile/person.svg
+  SvgGenImage get person =>
+      const SvgGenImage('assets/images/profile/person.svg');
+
+  /// File path: assets/images/profile/person.svg.vec
+  SvgGenImage get personSvg =>
+      const SvgGenImage.vec('assets/images/profile/person.svg.vec');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [person, personSvg];
 }
 
 class $AssetsImagesSplashGen {

@@ -52,23 +52,27 @@ class UserAccountMapper extends ClassMapperBase<UserAccount> {
 
 mixin UserAccountMappable {
   String toJson() {
-    return UserAccountMapper.ensureInitialized().encodeJson<UserAccount>(this as UserAccount);
+    return UserAccountMapper.ensureInitialized()
+        .encodeJson<UserAccount>(this as UserAccount);
   }
 
   Map<String, dynamic> toMap() {
-    return UserAccountMapper.ensureInitialized().encodeMap<UserAccount>(this as UserAccount);
+    return UserAccountMapper.ensureInitialized()
+        .encodeMap<UserAccount>(this as UserAccount);
   }
 
   UserAccountCopyWith<UserAccount, UserAccount, UserAccount> get copyWith =>
       _UserAccountCopyWithImpl(this as UserAccount, $identity, $identity);
   @override
   String toString() {
-    return UserAccountMapper.ensureInitialized().stringifyValue(this as UserAccount);
+    return UserAccountMapper.ensureInitialized()
+        .stringifyValue(this as UserAccount);
   }
 
   @override
   bool operator ==(Object other) {
-    return UserAccountMapper.ensureInitialized().equalsValue(this as UserAccount, other);
+    return UserAccountMapper.ensureInitialized()
+        .equalsValue(this as UserAccount, other);
   }
 
   @override
@@ -77,7 +81,8 @@ mixin UserAccountMappable {
   }
 }
 
-extension UserAccountValueCopy<$R, $Out> on ObjectCopyWith<$R, UserAccount, $Out> {
+extension UserAccountValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, UserAccount, $Out> {
   UserAccountCopyWith<$R, UserAccount, $Out> get $asUserAccount =>
       $base.as((v, t, t2) => _UserAccountCopyWithImpl(v, t, t2));
 }
@@ -88,23 +93,29 @@ abstract class UserAccountCopyWith<$R, $In extends UserAccount, $Out>
   UserAccountCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _UserAccountCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, UserAccount, $Out>
+class _UserAccountCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, UserAccount, $Out>
     implements UserAccountCopyWith<$R, UserAccount, $Out> {
   _UserAccountCopyWithImpl(super.value, super.then, super.then2);
 
   @override
-  late final ClassMapperBase<UserAccount> $mapper = UserAccountMapper.ensureInitialized();
+  late final ClassMapperBase<UserAccount> $mapper =
+      UserAccountMapper.ensureInitialized();
   @override
-  $R call({String? uId, String? name, String? email}) => $apply(FieldCopyWithData({
+  $R call({String? uId, String? name, String? email}) =>
+      $apply(FieldCopyWithData({
         if (uId != null) #uId: uId,
         if (name != null) #name: name,
         if (email != null) #email: email
       }));
   @override
-  UserAccount $make(CopyWithData data) => UserAccount(data.get(#uId, or: $value.uId),
-      data.get(#name, or: $value.name), data.get(#email, or: $value.email));
+  UserAccount $make(CopyWithData data) => UserAccount(
+      data.get(#uId, or: $value.uId),
+      data.get(#name, or: $value.name),
+      data.get(#email, or: $value.email));
 
   @override
-  UserAccountCopyWith<$R2, UserAccount, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+  UserAccountCopyWith<$R2, UserAccount, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
       _UserAccountCopyWithImpl($value, $cast, t);
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/signup_view.dart';
-import 'package:fruits_hub/features/home/persentaion/views/home.dart';
+import 'package:fruits_hub/features/home/presentaion/views/home_view.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 

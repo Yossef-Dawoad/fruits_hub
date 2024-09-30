@@ -7,7 +7,7 @@ import 'package:fruits_hub/core/common/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/core/common/widgets/generic_button.dart';
 import 'package:fruits_hub/core/common/widgets/progress_indecators.dart';
 import 'package:fruits_hub/features/authentication/presentation/blocs/login/login_bloc.dart';
-import 'package:fruits_hub/features/home/persentaion/views/home.dart';
+import 'package:fruits_hub/features/home/presentaion/views/home_view.dart';
 
 import 'doyou_forget_password.dart';
 import 'doyou_have_acc.dart';
