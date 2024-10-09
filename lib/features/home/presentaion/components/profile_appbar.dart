@@ -9,7 +9,7 @@ class ProfileHomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: VectorGraphic(
-        loader: AssetBytesLoader(Assets.images.profile.person.path),
+        loader: AssetBytesLoader(Assets.images.profile.personSvg.path),
       ),
       title: Text(
         'صباح الخير ..!',
@@ -23,7 +23,10 @@ class ProfileHomeAppBar extends StatelessWidget {
         child: IconButton.filled(
           padding: EdgeInsets.all(12),
           onPressed: () {},
-          icon: Icon(Icons.notifications),
+          icon: Icon(
+            Icons.notifications,
+            color: Colors.white,
+          ),
         ),
       ),
     );

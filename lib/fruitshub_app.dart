@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_hub/features/home/presentaion/views/home_view.dart';
 
 import 'core/common/styles/themes.dart';
 import 'core/routes/on_generate_route.dart';
@@ -26,7 +27,7 @@ class FruitsHubApp extends StatelessWidget {
       locale: const Locale('ar'),
       title: 'Fruits Hub',
       onGenerateRoute: generateRoute,
-      initialRoute: SplashView.routeName,
+      initialRoute: HomeView.routeName,
       // builder: (context, child) {
       //   Widget error = const Text('...rendering error...');
       //   if (child is Scaffold || child is Navigator) {
