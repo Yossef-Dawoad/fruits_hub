@@ -6,6 +6,8 @@ class GenericElevatedButton extends StatelessWidget {
     super.key,
     required this.child,
     required this.onPressed,
+    this.backgroundColor = Palette.primary,
+    this.elevation,
     this.height = 56,
     this.width,
   });
@@ -13,6 +15,8 @@ class GenericElevatedButton extends StatelessWidget {
   final Widget? child;
   final double? height;
   final double? width;
+  final double? elevation;
+  final Color? backgroundColor;
   final VoidCallback onPressed;
 
   @override
@@ -22,7 +26,8 @@ class GenericElevatedButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Palette.primary,
+          elevation: elevation,
+          backgroundColor: backgroundColor,
           shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         onPressed: onPressed,

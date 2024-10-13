@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 import 'package:fruits_hub/core/constants/images/assets.gen.dart';
-import 'package:vector_graphics/vector_graphics.dart';
 
 class ProfileHomeAppBar extends StatelessWidget {
   const ProfileHomeAppBar({super.key});
@@ -8,8 +8,11 @@ class ProfileHomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: VectorGraphic(
-        loader: AssetBytesLoader(Assets.images.profile.personSvg.path),
+      contentPadding: EdgeInsets.zero,
+      leading: CircleAvatar(
+        radius: 25,
+        backgroundColor: Palette.primary,
+        foregroundImage: Assets.images.profile.person.provider(),
       ),
       title: Text(
         'صباح الخير ..!',
@@ -17,15 +20,19 @@ class ProfileHomeAppBar extends StatelessWidget {
       ),
       subtitle: Text(
         'يوسف داود',
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge
+            ?.copyWith(fontWeight: FontWeight.bold, letterSpacing: 1.1),
       ),
       trailing: Badge(
+        padding: EdgeInsets.zero,
         child: IconButton.filled(
-          padding: EdgeInsets.all(12),
+          style: IconButton.styleFrom(backgroundColor: Palette.borderSecondary),
           onPressed: () {},
           icon: Icon(
-            Icons.notifications,
-            color: Colors.white,
+            Icons.notifications_none_outlined,
+            color: Palette.primary,
           ),
         ),
       ),

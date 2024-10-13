@@ -84,7 +84,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               BlocListener<LoginBloc, LoginState>(
                 listenWhen: (prev, curr) => curr is LoginSuccess || curr is LoginFailure,
                 listener: (context, state) => switch (state) {
-                  LoginSuccess() => _naviateToHome(), // TODO: navigate to home screen
+                  LoginSuccess() => _naviateToHome(),
                   LoginFailure(message: var msg) => _buildSnackBar(context, msg),
                   _ => const SizedBox.shrink()
                 },

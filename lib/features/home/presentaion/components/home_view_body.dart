@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/home/presentaion/components/featured_banners_list_vew.dart';
 import 'package:fruits_hub/features/home/presentaion/components/profile_appbar.dart';
 import 'package:fruits_hub/features/home/presentaion/components/search_bar.dart';
 
@@ -8,7 +9,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 14.0),
       child: const CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -18,6 +19,8 @@ class HomeViewBody extends StatelessWidget {
                 ProfileHomeAppBar(),
                 SizedBox(height: 10),
                 MainSearchBar(),
+                SizedBox(height: 10),
+                FeaturedBannersListVew(), //TODO: implement PageView Insttead
               ],
             ),
           ),
