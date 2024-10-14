@@ -14,7 +14,7 @@ class ProductItem extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(
-            bottom: 10,
+            // bottom: 5,
             right: 5,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

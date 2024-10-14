@@ -7,16 +7,16 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart' as _svg;
-import 'package:vector_graphics/vector_graphics.dart' as _vg;
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// Directory path: assets/images/logos
-  $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
+  /// Directory path: assets/images/icons
+  $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
 
   /// Directory path: assets/images/onboarding
   $AssetsImagesOnboardingGen get onboarding =>
@@ -29,36 +29,43 @@ class $AssetsImagesGen {
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 }
 
-class $AssetsImagesLogosGen {
-  const $AssetsImagesLogosGen();
+class $AssetsImagesIconsGen {
+  const $AssetsImagesIconsGen();
 
-  /// File path: assets/images/logos/apple_logo.svg
+  /// File path: assets/images/icons/apple_logo.svg
   SvgGenImage get appleLogo =>
-      const SvgGenImage('assets/images/logos/apple_logo.svg');
+      const SvgGenImage('assets/images/icons/apple_logo.svg');
 
-  /// File path: assets/images/logos/apple_logo.svg.vec
+  /// File path: assets/images/icons/apple_logo.svg.vec
   SvgGenImage get appleLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/apple_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/apple_logo.svg.vec');
 
-  /// File path: assets/images/logos/facebook_logo.svg
+  /// Directory path: assets/images/icons/bold
+  $AssetsImagesIconsBoldGen get bold => const $AssetsImagesIconsBoldGen();
+
+  /// File path: assets/images/icons/facebook_logo.svg
   SvgGenImage get facebookLogo =>
-      const SvgGenImage('assets/images/logos/facebook_logo.svg');
+      const SvgGenImage('assets/images/icons/facebook_logo.svg');
 
-  /// File path: assets/images/logos/facebook_logo.svg.vec
+  /// File path: assets/images/icons/facebook_logo.svg.vec
   SvgGenImage get facebookLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/facebook_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/facebook_logo.svg.vec');
 
-  /// File path: assets/images/logos/google_logo.svg
+  /// File path: assets/images/icons/google_logo.svg
   SvgGenImage get googleLogo =>
-      const SvgGenImage('assets/images/logos/google_logo.svg');
+      const SvgGenImage('assets/images/icons/google_logo.svg');
 
-  /// File path: assets/images/logos/google_logo.svg.vec
+  /// File path: assets/images/icons/google_logo.svg.vec
   SvgGenImage get googleLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/google_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/google_logo.svg.vec');
 
-  /// File path: assets/images/logos/store_logo.png
+  /// Directory path: assets/images/icons/outlined
+  $AssetsImagesIconsOutlinedGen get outlined =>
+      const $AssetsImagesIconsOutlinedGen();
+
+  /// File path: assets/images/icons/store_logo.png
   AssetGenImage get storeLogo =>
-      const AssetGenImage('assets/images/logos/store_logo.png');
+      const AssetGenImage('assets/images/icons/store_logo.png');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -169,6 +176,102 @@ class $AssetsImagesSplashGen {
       ];
 }
 
+class $AssetsImagesIconsBoldGen {
+  const $AssetsImagesIconsBoldGen();
+
+  /// File path: assets/images/icons/bold/home.svg
+  SvgGenImage get home =>
+      const SvgGenImage('assets/images/icons/bold/home.svg');
+
+  /// File path: assets/images/icons/bold/home.svg.vec
+  SvgGenImage get homeSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/home.svg.vec');
+
+  /// File path: assets/images/icons/bold/products.svg
+  SvgGenImage get products =>
+      const SvgGenImage('assets/images/icons/bold/products.svg');
+
+  /// File path: assets/images/icons/bold/products.svg.vec
+  SvgGenImage get productsSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/products.svg.vec');
+
+  /// File path: assets/images/icons/bold/shopping-cart.svg
+  SvgGenImage get shoppingCart =>
+      const SvgGenImage('assets/images/icons/bold/shopping-cart.svg');
+
+  /// File path: assets/images/icons/bold/shopping-cart.svg.vec
+  SvgGenImage get shoppingCartSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/shopping-cart.svg.vec');
+
+  /// File path: assets/images/icons/bold/user.svg
+  SvgGenImage get user =>
+      const SvgGenImage('assets/images/icons/bold/user.svg');
+
+  /// File path: assets/images/icons/bold/user.svg.vec
+  SvgGenImage get userSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/user.svg.vec');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        home,
+        homeSvg,
+        products,
+        productsSvg,
+        shoppingCart,
+        shoppingCartSvg,
+        user,
+        userSvg
+      ];
+}
+
+class $AssetsImagesIconsOutlinedGen {
+  const $AssetsImagesIconsOutlinedGen();
+
+  /// File path: assets/images/icons/outlined/home.svg
+  SvgGenImage get home =>
+      const SvgGenImage('assets/images/icons/outlined/home.svg');
+
+  /// File path: assets/images/icons/outlined/home.svg.vec
+  SvgGenImage get homeSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/home.svg.vec');
+
+  /// File path: assets/images/icons/outlined/products.svg
+  SvgGenImage get products =>
+      const SvgGenImage('assets/images/icons/outlined/products.svg');
+
+  /// File path: assets/images/icons/outlined/products.svg.vec
+  SvgGenImage get productsSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/products.svg.vec');
+
+  /// File path: assets/images/icons/outlined/shopping-cart.svg
+  SvgGenImage get shoppingCart =>
+      const SvgGenImage('assets/images/icons/outlined/shopping-cart.svg');
+
+  /// File path: assets/images/icons/outlined/shopping-cart.svg.vec
+  SvgGenImage get shoppingCartSvg => const SvgGenImage.vec(
+      'assets/images/icons/outlined/shopping-cart.svg.vec');
+
+  /// File path: assets/images/icons/outlined/user.svg
+  SvgGenImage get user =>
+      const SvgGenImage('assets/images/icons/outlined/user.svg');
+
+  /// File path: assets/images/icons/outlined/user.svg.vec
+  SvgGenImage get userSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/user.svg.vec');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        home,
+        homeSvg,
+        products,
+        productsSvg,
+        shoppingCart,
+        shoppingCartSvg,
+        user,
+        userSvg
+      ];
+}
+
 class Assets {
   Assets._();
 
@@ -205,7 +308,7 @@ class AssetGenImage {
     ImageRepeat repeat = ImageRepeat.noRepeat,
     Rect? centerSlice,
     bool matchTextDirection = false,
-    bool gaplessPlayback = true,
+    bool gaplessPlayback = false,
     bool isAntiAlias = false,
     String? package,
     FilterQuality filterQuality = FilterQuality.low,
@@ -274,7 +377,7 @@ class SvgGenImage {
   final Set<String> flavors;
   final bool _isVecFormat;
 
-  _svg.SvgPicture svg({
+  SvgPicture svg({
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
@@ -287,29 +390,29 @@ class SvgGenImage {
     WidgetBuilder? placeholderBuilder,
     String? semanticsLabel,
     bool excludeFromSemantics = false,
-    _svg.SvgTheme? theme,
+    SvgTheme? theme,
     ColorFilter? colorFilter,
     Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
-    final _svg.BytesLoader loader;
+    final BytesLoader loader;
     if (_isVecFormat) {
-      loader = _vg.AssetBytesLoader(
+      loader = AssetBytesLoader(
         _assetName,
         assetBundle: bundle,
         packageName: package,
       );
     } else {
-      loader = _svg.SvgAssetLoader(
+      loader = SvgAssetLoader(
         _assetName,
         assetBundle: bundle,
         packageName: package,
         theme: theme,
       );
     }
-    return _svg.SvgPicture(
+    return SvgPicture(
       loader,
       key: key,
       matchTextDirection: matchTextDirection,

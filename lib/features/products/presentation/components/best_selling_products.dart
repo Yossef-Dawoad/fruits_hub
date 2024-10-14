@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../widgets/product_item.dart';
 
-class BestSellingProducts extends StatelessWidget {
-  const BestSellingProducts({super.key});
+class BestSellingProductsSliverGrid extends StatelessWidget {
+  const BestSellingProductsSliverGrid({super.key});
 
   @override
   Widget build(BuildContext context) {

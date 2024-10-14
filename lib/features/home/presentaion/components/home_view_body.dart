@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/common/widgets/title_header_row.dart';
-import 'package:fruits_hub/features/home/presentaion/components/best_selling_products.dart';
+import 'package:fruits_hub/features/products/presentation/components/best_selling_products.dart';
 import 'package:fruits_hub/features/home/presentaion/components/featured_banners_list_vew.dart';
 import 'package:fruits_hub/features/home/presentaion/components/profile_appbar.dart';
 import 'package:fruits_hub/features/home/presentaion/components/search_bar.dart';
@@ -28,7 +28,7 @@ class HomeViewBody extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(child: BestSellingHeader()),
-          BestSellingProducts(),
+          BestSellingProductsSliverGrid(),
         ],
       ),
     );

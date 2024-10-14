@@ -21,14 +21,14 @@ class SocialLoginButtons extends StatelessWidget {
                 width: double.infinity,
                 height: 56,
                 label: Text('تسجيل بواسطه ابل', style: Theme.of(context).textTheme.titleMedium),
-                imagePath: Assets.images.logos.appleLogoSvg.path,
+                imagePath: Assets.images.icons.appleLogoSvg.path,
                 onPressed: () {},
               )
             : GenericOutlineButton(
                 width: double.infinity,
                 height: 56,
                 label: Text('تسجيل بواسطه جوجل', style: Theme.of(context).textTheme.titleMedium),
-                imagePath: Assets.images.logos.googleLogoSvg.path,
+                imagePath: Assets.images.icons.googleLogoSvg.path,
                 onPressed: () {
                   log('Google Signed Pressed');
                   context.read<LoginBloc>().add(LoginWithGoogleRequested());
@@ -39,7 +39,7 @@ class SocialLoginButtons extends StatelessWidget {
           width: double.infinity,
           height: 56,
           label: Text('تسجيل بواسطه فيسبوك', style: Theme.of(context).textTheme.titleMedium),
-          imagePath: Assets.images.logos.facebookLogoSvg.path,
+          imagePath: Assets.images.icons.facebookLogoSvg.path,
           onPressed: () {
             context.read<LoginBloc>().add(LoginWithFacebookRequested());
           },
