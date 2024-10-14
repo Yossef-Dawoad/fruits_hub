@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/common/widgets/title_header_row.dart';
+import 'package:fruits_hub/features/home/presentaion/components/best_selling_products.dart';
 import 'package:fruits_hub/features/home/presentaion/components/featured_banners_list_vew.dart';
 import 'package:fruits_hub/features/home/presentaion/components/profile_appbar.dart';
 import 'package:fruits_hub/features/home/presentaion/components/search_bar.dart';
@@ -20,12 +22,28 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(height: 10),
                 MainSearchBar(),
                 SizedBox(height: 10),
-                FeaturedBannersListVew(), //TODO: implement PageView Insttead
+                FeaturedBannersListVew(), //TODO: implement PageView Instead
+                SizedBox(height: 10),
               ],
             ),
           ),
+          SliverToBoxAdapter(child: BestSellingHeader()),
+          BestSellingProducts(),
         ],
       ),
+    );
+  }
+}
+
+class BestSellingHeader extends StatelessWidget {
+  const BestSellingHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TitleHeaderRow(
+      title: 'الاكثر مبيعا',
+      subtitle: 'عرض الكل',
+      onPressed: () {},
     );
   }
 }
