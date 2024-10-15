@@ -4,6 +4,7 @@ import 'package:fruits_hub/features/products/presentation/components/best_sellin
 import 'package:fruits_hub/features/home/presentaion/components/featured_banners_list_vew.dart';
 import 'package:fruits_hub/features/home/presentaion/components/profile_appbar.dart';
 import 'package:fruits_hub/features/home/presentaion/components/search_bar.dart';
+import 'package:fruits_hub/features/products/presentation/views/best_selling_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -43,7 +44,7 @@ class BestSellingHeader extends StatelessWidget {
     return TitleHeaderRow(
       title: 'الاكثر مبيعا',
       subtitle: 'عرض الكل',
-      onPressed: () {},
+      onPressed: () => Navigator.pushNamed(context, BestSellingView.routeName),
     );
   }
 }

@@ -26,7 +26,7 @@ class TitleHeaderRow extends StatelessWidget {
             onPressed: onPressed ?? () {},
             child: Text(
               subtitle!,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Palette.primary),
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Palette.primary),
             ),
           )
       ],
