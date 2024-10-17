@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fruits_hub/features/home/presentaion/views/home_view.dart';
+import 'package:fruits_hub/core/routes/app_router.dart';
 
 import 'core/common/styles/themes.dart';
-import 'core/routes/on_generate_route.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 import 'generated/l10n.dart';
 
 class FruitsHubApp extends StatelessWidget {
@@ -12,7 +10,7 @@ class FruitsHubApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         S.delegate,
@@ -26,8 +24,10 @@ class FruitsHubApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('ar'),
       title: 'Fruits Hub',
-      onGenerateRoute: generateRoute,
-      initialRoute: HomeView.routeName,
+      routerConfig: AppRouter.router,
+
+      // onGenerateRoute: generateRoute,
+      // initialRoute: HomeView.routeName,
       // builder: (context, child) {
       //   Widget error = const Text('...rendering error...');
       //   if (child is Scaffold || child is Navigator) {

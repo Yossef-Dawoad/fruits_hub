@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/common/services/local_storage/shared_prefs_helpe
 import 'package:fruits_hub/core/dependency_injection/di.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widgets/splash_view_body.dart';
 
@@ -34,9 +35,9 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        if (!mounted) return null;
-        if (isOnboardingSeen) return Navigator.pushReplacementNamed(context, LoginView.routeName);
-        return Navigator.pushReplacementNamed(context, OnboardingView.routeName);
+        if (!mounted) return;
+        if (isOnboardingSeen) return context.pushReplacementNamed(LoginView.routeName);
+        return context.pushReplacementNamed(OnboardingView.routeName);
       },
     );
   }

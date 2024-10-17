@@ -8,6 +8,7 @@ import 'package:fruits_hub/core/common/widgets/generic_button.dart';
 import 'package:fruits_hub/core/common/widgets/progress_indecators.dart';
 import 'package:fruits_hub/features/authentication/presentation/blocs/login/login_bloc.dart';
 import 'package:fruits_hub/features/home/presentaion/views/home_view.dart';
+import 'package:go_router/go_router.dart';
 
 import 'doyou_forget_password.dart';
 import 'doyou_have_acc.dart';
@@ -105,7 +106,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   void _naviateToHome() {
     log('Login Success Navigate to Home');
-    Navigator.pushReplacementNamed(context, HomeView.routeName);
+    context.pushReplacementNamed(HomeView.routeName);
   }
 
   void _onSignInButtonPressed() {
