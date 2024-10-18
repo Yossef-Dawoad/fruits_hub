@@ -27,7 +27,7 @@ class FruitsHubApp extends StatelessWidget {
       routerConfig: AppRouter.router,
 
       // onGenerateRoute: generateRoute,
-      // initialRoute: HomeView.routeName,
+      // initialRoute: HomeView.routePath,
       // builder: (context, child) {
       //   Widget error = const Text('...rendering error...');
       //   if (child is Scaffold || child is Navigator) {

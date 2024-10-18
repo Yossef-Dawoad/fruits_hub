@@ -8,7 +8,7 @@ import '../widgets/signup_view_body.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
-  static const routeName = '/signup';
+  static const routePath = '/signup';
 
   @override
   Widget build(BuildContext context) {

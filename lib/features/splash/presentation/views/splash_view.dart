@@ -10,7 +10,7 @@ import 'widgets/splash_view_body.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
-  static const routeName = '/splash';
+  static const routePath = '/splash';
 
   @override
   State<SplashView> createState() => _SplashViewState();
@@ -35,9 +35,11 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
+        //TODO Research of how to incoporate the home navigation if the user is logged in
+
         if (!mounted) return;
-        if (isOnboardingSeen) return context.pushReplacementNamed(LoginView.routeName);
-        return context.pushReplacementNamed(OnboardingView.routeName);
+        if (isOnboardingSeen) return context.pushReplacementNamed(LoginView.routePath);
+        return context.pushReplacementNamed(OnboardingView.routePath);
       },
     );
   }

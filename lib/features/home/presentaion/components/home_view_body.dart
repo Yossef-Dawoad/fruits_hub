@@ -45,7 +45,8 @@ class BestSellingHeader extends StatelessWidget {
     return TitleHeaderRow(
       title: 'الاكثر مبيعا',
       subtitle: 'عرض الكل',
-      onPressed: () => context.push(BestSellingView.routeName),
+      // onPressed: () => context.push('${HomeView.routePath}/${BestSellingView.routePath}'),
+      onPressed: () => context.pushNamed(BestSellingView.routeName),
     );
   }
 }

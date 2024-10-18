@@ -93,4 +93,17 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(ServerFailure(message: 'Unknown error'));
     }
   }
+
+  @override
+  Future<Result<UserAccount>> get currentUser async {
+    try {
+      final user = await authService.currentUser;
+      if (user == null) return Left(AuthenticationFailure(message: 'User not found'));
+      return Right(UserAccount.fromFirebaseUser(user));
+    } on AuthException catch (e) {
+      return Left(AuthenticationFailure(message: e.message));
+    } catch (e) {
+      return Left(ServerFailure(message: 'Unknown error'));
+    }
+  }
 }

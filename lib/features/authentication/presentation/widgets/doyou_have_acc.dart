@@ -19,7 +19,7 @@ class DontYouHaveAcc extends StatelessWidget {
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushNamed(SignupView.routeName);
+                context.pushNamed(SignupView.routePath);
               },
             text: ' سجل الان',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Palette.primary),

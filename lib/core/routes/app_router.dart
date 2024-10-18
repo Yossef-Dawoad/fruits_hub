@@ -8,40 +8,36 @@ import '../../features/home/presentaion/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/best_selling_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
+import '../common/widgets/scaffold_with_nav_shell.dart';
 
 // private navigators
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shellA');
+final _shellNavigatorHomeKey = GlobalKey<NavigatorState>(debugLabel: 'HomeShell');
 final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shellB');
+final _shellNavigatorCKey = GlobalKey<NavigatorState>(debugLabel: 'shellC');
+final _shellNavigatorDKey = GlobalKey<NavigatorState>(debugLabel: 'shellD');
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: HomeView.routeName,
+    initialLocation: HomeView.routePath,
     navigatorKey: _rootNavigatorKey,
+    debugLogDiagnostics: true,
     routes: [
       GoRoute(
-        path: SplashView.routeName,
+        path: SplashView.routePath,
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
-        path: OnboardingView.routeName,
+        path: OnboardingView.routePath,
         builder: (context, state) => const OnboardingView(),
       ),
       GoRoute(
-        path: LoginView.routeName,
+        path: LoginView.routePath,
         builder: (context, state) => const LoginView(),
       ),
       GoRoute(
-        path: SignupView.routeName,
+        path: SignupView.routePath,
         builder: (context, state) => const SignupView(),
-      ),
-      GoRoute(
-        path: HomeView.routeName,
-        builder: (context, state) => const HomeView(),
-      ),
-      GoRoute(
-        path: BestSellingView.routeName,
-        builder: (context, state) => const BestSellingView(),
       ),
 
       // Stateful nested navigation based on:
@@ -49,26 +45,28 @@ class AppRouter {
       // to create a custom ScaffoldWithNestedNavigation widget
 
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            ScaffoldWithNestedNavigation(navigationShell: navigationShell),
+        builder: (context, state, navigationShell) => ScaffoldWithNestedNavigation(
+          navigationShell: navigationShell,
+        ),
 
         // each representing a separate stateful branch. in the route tree.
         branches: [
-          // first branch (A)
+          // first branch (Home)
           StatefulShellBranch(
-            navigatorKey: _shellNavigatorAKey,
+            navigatorKey: _shellNavigatorHomeKey,
             routes: [
               // top route inside branch
               GoRoute(
-                path: '/a',
+                path: HomeView.routePath,
                 pageBuilder: (context, state) => const NoTransitionPage(
-                  child: RootScreen(label: 'A', detailsPath: '/a/details'),
+                  child: HomeView(),
                 ),
                 routes: [
                   // child route
                   GoRoute(
-                    path: 'details',
-                    builder: (context, state) => const DetailsScreen(label: 'A'),
+                    path: BestSellingView.routePath,
+                    name: BestSellingView.routeName,
+                    builder: (context, state) => const BestSellingView(),
                   ),
                 ],
               ),
@@ -94,47 +92,54 @@ class AppRouter {
               ),
             ],
           ),
+          // Third branch (c)
+          StatefulShellBranch(
+            navigatorKey: _shellNavigatorCKey,
+            routes: [
+              // top route inside branch
+              GoRoute(
+                path: '/c',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: RootScreen(label: 'C', detailsPath: '/c/details'),
+                ),
+                routes: [
+                  // child route
+                  GoRoute(
+                    path: 'details',
+                    builder: (context, state) => const DetailsScreen(label: 'C'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          // Forth branch (D)
+          StatefulShellBranch(
+            navigatorKey: _shellNavigatorDKey,
+            routes: [
+              // top route inside branch
+              GoRoute(
+                path: '/d',
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: RootScreen(label: 'D', detailsPath: '/d/details'),
+                ),
+                routes: [
+                  // child route
+                  GoRoute(
+                    path: 'details',
+                    builder: (context, state) => const DetailsScreen(label: 'D'),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ],
       )
     ],
   );
 }
 
-// Stateful nested navigation based on:
-// https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
-class ScaffoldWithNestedNavigation extends StatelessWidget {
-  const ScaffoldWithNestedNavigation({
-    Key? key,
-    required this.navigationShell,
-  }) : super(key: key ?? const ValueKey('RootScaffoldWithNestedNavigation'));
-  final StatefulNavigationShell navigationShell;
-
-  void _goBranch(int index) {
-    navigationShell.goBranch(
-      index,
-      // A common pattern when using bottom navigation bars is to support
-      // navigating to the initial location when tapping the item that is
-      // already active. This example demonstrates how to support this behavior,
-      // using the initialLocation parameter of goBranch.
-      initialLocation: index == navigationShell.currentIndex,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: _goBranch,
-        destinations: const [
-          NavigationDestination(label: 'Section A', icon: Icon(Icons.home)),
-          NavigationDestination(label: 'Section B', icon: Icon(Icons.settings)),
-        ],
-      ),
-    );
-  }
-}
+// // Stateful nested navigation based on:
+// // https://github.com/flutter/packages/blob/main/packages/go_router/example/lib/stateful_shell_route.dart
 
 /// Widget for the root/initial pages in the bottom navigation bar.
 class RootScreen extends StatelessWidget {
@@ -155,6 +160,7 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Tab root - $label'),
       ),
       body: Center(

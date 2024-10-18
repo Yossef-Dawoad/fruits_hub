@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constants/colors/color_palette.dart';
 import 'package:fruits_hub/core/constants/images/assets.gen.dart';
 
-class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({super.key});
+class CustomBottomNavBar extends StatelessWidget {
+  const CustomBottomNavBar({
+    super.key,
+    required this.selectedIndex,
+    required this.onDestinationSelected,
+  });
 
-  @override
-  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
-}
-
-class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  int currentPageIndex = 0;
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         topRight: Radius.circular(20),
       ),
       child: NavigationBar(
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (int index) => setState(() => currentPageIndex = index),
+        selectedIndex: selectedIndex,
+        onDestinationSelected: onDestinationSelected,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         indicatorColor: Palette.primary,
         destinations: <Widget>[

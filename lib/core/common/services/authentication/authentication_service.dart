@@ -13,4 +13,6 @@ abstract interface class AuthenticationService<UserType> {
   Future<UserType> signInWithFacebook();
   Future<void> signOut();
   Future<bool> deleteAccount();
+
+  Future<UserType?> get currentUser;
 }

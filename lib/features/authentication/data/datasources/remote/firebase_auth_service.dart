@@ -142,4 +142,14 @@ class FirebaseAuthService implements AuthenticationService<User> {
     _logger.severe('Error in method ${methodName ??= 'Unknown'} related to AuthService: ', err);
     return AuthException(message: details);
   }
+
+  @override
+  Future<User?> get currentUser async {
+    final user = authInstanace.currentUser;
+    if (user == null) {
+      _logger.severe('Error in getCurrentUser', 'User retruned is null');
+      return null;
+    }
+    return user;
+  }
 }

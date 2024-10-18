@@ -106,7 +106,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
   void _naviateToHome() {
     log('Login Success Navigate to Home');
-    context.pushReplacementNamed(HomeView.routeName);
+    context.pushReplacementNamed(HomeView.routePath);
   }
 
   void _onSignInButtonPressed() {

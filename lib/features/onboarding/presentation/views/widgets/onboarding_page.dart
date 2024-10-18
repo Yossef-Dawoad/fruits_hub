@@ -39,7 +39,7 @@ class OnBoardingPage extends StatelessWidget {
               Visibility(
                 visible: pageIndex == 0,
                 child: GestureDetector(
-                  onTap: () => context.pushReplacementNamed(LoginView.routeName),
+                  onTap: () => context.pushReplacementNamed(LoginView.routePath),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text('تـخط', style: Theme.of(context).textTheme.bodyMedium),
