@@ -14,5 +14,5 @@ abstract interface class AuthenticationService<UserType> {
   Future<void> signOut();
   Future<bool> deleteAccount();
 
-  Future<UserType?> get currentUser;
+  Future<String?> get userTok;
 }

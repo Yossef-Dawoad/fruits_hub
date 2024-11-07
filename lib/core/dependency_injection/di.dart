@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
 import 'package:fruits_hub/core/common/services/remote_storage/firebase_store_service.dart';
 import 'package:fruits_hub/features/authentication/data/datasources/remote/firebase_auth_service.dart';
+import 'package:fruits_hub/features/authentication/data/models/user_account.dart';
 import 'package:fruits_hub/features/authentication/data/repositories/authentication_repo.dart';
 import 'package:fruits_hub/features/authentication/domain/repositories/auth_repo.dart';
 import 'package:fruits_hub/features/authentication/presentation/blocs/login/login_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fruits_hub/core/common/services/local_storage/shared_prefs_helper.dart';
 
+import '../common/blocs/bloc/authenticated_user_bloc.dart';
 import '../common/services/remote_storage/storage_service.dart';
 
 final sl = GetIt.instance;
@@ -31,11 +34,14 @@ Future<void> setupSharedAndSecureStorage() async {
 }
 
 void setupAuthenticationServices() {
-  sl.registerLazySingleton<RemoteNoSqlStorageService>(() => UserFirebaseStoreService());
-  sl.registerLazySingleton<AuthenticationService>(() => FirebaseAuthService());
+  sl.registerLazySingleton<RemoteNoSqlStorageService<UserAccount>>(
+    () => UserFirebaseStoreService(),
+  );
+  sl.registerLazySingleton<AuthenticationService<User>>(() => FirebaseAuthService());
   sl.registerLazySingleton<AuthenticationRepository>(
-    () => AuthenticationRepositoryImpl(sl(), sl()),
+    () => AuthenticationRepositoryImpl<User>(sl(), sl()),
   );
   sl.registerFactory(() => SignupBloc(sl()));
   sl.registerFactory(() => LoginBloc(sl()));
+  sl.registerFactory(() => AuthenticatedUserBloc(sl()));
 }

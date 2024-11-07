@@ -1,10 +1,14 @@
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
+import 'package:fruits_hub/core/common/services/local_storage/prefs_keys.dart';
 import 'package:fruits_hub/core/common/types/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_hub/core/dependency_injection/di.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:logging/logging.dart';
+
+import '../../../../../core/common/services/local_storage/shared_prefs_helper.dart';
 
 class FirebaseAuthService implements AuthenticationService<User> {
   final authInstanace = FirebaseAuth.instance;
@@ -50,6 +54,7 @@ class FirebaseAuthService implements AuthenticationService<User> {
   Future<void> signOut() async {
     try {
       await authInstanace.signOut();
+      sl<SharedPrefHelper>().setSecuredString(PrefsKeys.userToken, '');
     } on Exception catch (err) {
       _logger.severe('Error in signOut', err);
       throw AuthException(message: 'Something went wrong, please try again later.');
@@ -116,6 +121,7 @@ class FirebaseAuthService implements AuthenticationService<User> {
         _logger.severe(' Error in deleteAccount', 'User retruned is null');
         throw AuthException(message: 'Something went wrong, please try again later.');
       }
+      sl<SharedPrefHelper>().setSecuredString(PrefsKeys.userToken, '');
       await user.delete();
       return true;
     } on FirebaseAuthException catch (e) {
@@ -144,12 +150,20 @@ class FirebaseAuthService implements AuthenticationService<User> {
   }
 
   @override
-  Future<User?> get currentUser async {
-    final user = authInstanace.currentUser;
-    if (user == null) {
-      _logger.severe('Error in getCurrentUser', 'User retruned is null');
-      return null;
-    }
-    return user;
+  Future<String?> get userTok async {
+    String? userToken = await _getUserFromCache();
+    if (userToken != null) return userToken;
+    final userData = authInstanace.currentUser;
+    userToken = await userData?.getIdToken();
+    await sl<SharedPrefHelper>().setSecuredString(PrefsKeys.userToken, userToken ?? '');
+    if (userToken != null) return userToken;
+    _logger.severe('Error in get userTok', 'User retruned is null');
+    throw AuthException(message: 'Something went wrong, please try again later.');
+  }
+
+  Future<String?> _getUserFromCache() async {
+    final String userTok = await sl<SharedPrefHelper>().getSecuredString(PrefsKeys.userToken) ?? '';
+    if (userTok.isEmpty) return null;
+    return userTok;
   }
 }

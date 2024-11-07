@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:fruits_hub/core/common/blocs/bloc/authenticated_user_bloc.dart';
 
 import '../../features/authentication/presentation/view/login_view.dart';
 import '../../features/authentication/presentation/view/signup_view.dart';
@@ -9,6 +11,7 @@ import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/best_selling_view.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 import '../common/widgets/scaffold_with_nav_shell.dart';
+import '../dependency_injection/di.dart';
 
 // private navigators
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -18,14 +21,19 @@ final _shellNavigatorCKey = GlobalKey<NavigatorState>(debugLabel: 'shellC');
 final _shellNavigatorDKey = GlobalKey<NavigatorState>(debugLabel: 'shellD');
 
 class AppRouter {
+  AppRouter._();
+
   static final GoRouter router = GoRouter(
-    initialLocation: HomeView.routePath,
+    initialLocation: SplashView.routePath,
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
         path: SplashView.routePath,
-        builder: (context, state) => const SplashView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl<AuthenticatedUserBloc>(), //..add(CheckCurrentUserEvent()),
+          child: const SplashView(),
+        ),
       ),
       GoRoute(
         path: OnboardingView.routePath,

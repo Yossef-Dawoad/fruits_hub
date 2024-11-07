@@ -17,5 +17,5 @@ abstract interface class AuthenticationRepository<UserType extends UserAccount> 
   Future<Result<UserType>> signInWithFacebook();
   Future<Result<void>> signOut();
 
-  Future<Result<UserAccount>> get currentUser;
+  FutureResult<String?> get userTok;
 }

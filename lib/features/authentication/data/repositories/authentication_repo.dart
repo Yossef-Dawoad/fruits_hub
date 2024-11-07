@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
 import 'package:fruits_hub/core/common/services/remote_storage/storage_service.dart';
 import 'package:fruits_hub/core/common/types/errors.dart';
@@ -7,9 +8,9 @@ import 'package:fruits_hub/core/common/types/result.dart';
 import '../../domain/repositories/auth_repo.dart';
 import '../models/user_account.dart';
 
-class AuthenticationRepositoryImpl implements AuthenticationRepository {
-  final AuthenticationService authService;
-  final RemoteNoSqlStorageService remoteLocalService;
+class AuthenticationRepositoryImpl<ServiceUser extends User> implements AuthenticationRepository {
+  final AuthenticationService<ServiceUser> authService;
+  final RemoteNoSqlStorageService<UserAccount> remoteLocalService;
 
   AuthenticationRepositoryImpl(this.authService, this.remoteLocalService);
 
@@ -72,8 +73,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     try {
       final newUser = await authService.signInWithGoogle();
       final userAcc = UserAccount.fromFirebaseUser(newUser);
-      final userExists = await remoteLocalService.getRecordById(newUser.id);
-      if (userExists) await remoteLocalService.saveNewRecord(userAcc);
+      final userExists = await remoteLocalService.getRecordById(newUser.uid);
+      if (userExists != null) await remoteLocalService.saveNewRecord(userAcc);
       return Right(userAcc);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
@@ -95,11 +96,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<UserAccount>> get currentUser async {
+  FutureResult<String?> get userTok async {
     try {
-      final user = await authService.currentUser;
-      if (user == null) return Left(AuthenticationFailure(message: 'User not found'));
-      return Right(UserAccount.fromFirebaseUser(user));
+      final userToken = await authService.userTok;
+      return Right(userToken);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {

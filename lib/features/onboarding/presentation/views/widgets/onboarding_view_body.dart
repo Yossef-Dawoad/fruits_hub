@@ -53,7 +53,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               onPressed: () async {
                 await sl<SharedPrefHelper>().setData(PrefsKeys.isOnBoardingSeen, true);
                 if (context.mounted) {
-                  context.pushReplacementNamed(LoginView.routePath);
+                  context.pushReplacement(LoginView.routePath);
                 }
               },
               width: double.infinity,

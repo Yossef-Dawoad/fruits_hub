@@ -47,6 +47,11 @@ class SharedPrefHelper {
     return value;
   }
 
+  Future<void> clearSecuredData(String key) async {
+    await _secureStorage.delete(key: key);
+    _log('secured data with the following key: $key has been cleared');
+  }
+
   Future<void> clearAllSecuredData() async {
     await _secureStorage.deleteAll();
     _log('All secured data has been cleared');
