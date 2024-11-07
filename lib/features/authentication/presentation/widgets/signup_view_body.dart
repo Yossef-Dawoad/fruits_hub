@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/common/widgets/custom_password_field.dart';
 import 'package:fruits_hub/core/common/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub/core/common/widgets/generic_button.dart';
 import 'package:fruits_hub/core/common/widgets/progress_indecators.dart';
+import 'package:go_router/go_router.dart';
 
 import '../blocs/signup/signup_bloc.dart';
 import 'doyou_have_acc.dart';
@@ -86,7 +87,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               BlocListener<SignupBloc, SignupState>(
                 listenWhen: (prev, curr) => curr is SignupSuccess || curr is SignupFailure,
                 listener: (context, state) => switch (state) {
-                  SignupSuccess() => Navigator.of(context).pop(),
+                  SignupSuccess() => context.pop(),
                   SignupFailure(message: var msg) => _buildSnackBar(context, msg),
                   _ => const SizedBox.shrink()
                 },

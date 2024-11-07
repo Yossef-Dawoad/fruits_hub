@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/dependency_injection/di.dart';
 import 'package:fruits_hub/features/authentication/presentation/blocs/signup/signup_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/signup_view_body.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
-  static const routeName = '/signup';
+  static const routePath = '/signup';
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SignupView extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       leading: IconButton(
-        onPressed: Navigator.of(context).pop,
+        onPressed: context.pop,
         icon: const Icon(Icons.arrow_back_ios),
       ),
       title: Text(

@@ -7,7 +7,7 @@ import '../widgets/login_view_body.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-  static const routeName = '/login';
+  static const routePath = '/login';
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +23,7 @@ class LoginView extends StatelessWidget {
   AppBar _buildLoginAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      leading: IconButton(
-        onPressed: Navigator.of(context).pop,
-        icon: const Icon(Icons.arrow_back_ios),
-      ),
+      automaticallyImplyLeading: false,
       title: Text(
         'تسجيل الدخول',
         textAlign: TextAlign.center,

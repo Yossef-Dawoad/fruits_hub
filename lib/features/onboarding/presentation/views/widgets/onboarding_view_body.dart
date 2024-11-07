@@ -7,6 +7,7 @@ import 'package:fruits_hub/core/dependency_injection/di.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/models/page_content.dart';
 import 'package:fruits_hub/features/onboarding/presentation/views/widgets/onboarding_page.dart';
+import 'package:go_router/go_router.dart';
 import 'indicator.dart';
 
 class OnboardingViewBody extends StatefulWidget {
@@ -52,7 +53,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
               onPressed: () async {
                 await sl<SharedPrefHelper>().setData(PrefsKeys.isOnBoardingSeen, true);
                 if (context.mounted) {
-                  Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+                  context.pushReplacement(LoginView.routePath);
                 }
               },
               width: double.infinity,
@@ -60,7 +61,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             ),
           ),
         ),
-        const SizedBox(height: 40),
+        // const SizedBox(height: 40),
       ],
     );
   }

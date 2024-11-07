@@ -15,47 +15,57 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// Directory path: assets/images/logos
-  $AssetsImagesLogosGen get logos => const $AssetsImagesLogosGen();
+  /// Directory path: assets/images/icons
+  $AssetsImagesIconsGen get icons => const $AssetsImagesIconsGen();
 
   /// Directory path: assets/images/onboarding
   $AssetsImagesOnboardingGen get onboarding =>
       const $AssetsImagesOnboardingGen();
 
+  /// Directory path: assets/images/profile
+  $AssetsImagesProfileGen get profile => const $AssetsImagesProfileGen();
+
   /// Directory path: assets/images/splash
   $AssetsImagesSplashGen get splash => const $AssetsImagesSplashGen();
 }
 
-class $AssetsImagesLogosGen {
-  const $AssetsImagesLogosGen();
+class $AssetsImagesIconsGen {
+  const $AssetsImagesIconsGen();
 
-  /// File path: assets/images/logos/apple_logo.svg
+  /// File path: assets/images/icons/apple_logo.svg
   SvgGenImage get appleLogo =>
-      const SvgGenImage('assets/images/logos/apple_logo.svg');
+      const SvgGenImage('assets/images/icons/apple_logo.svg');
 
-  /// File path: assets/images/logos/apple_logo.svg.vec
+  /// File path: assets/images/icons/apple_logo.svg.vec
   SvgGenImage get appleLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/apple_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/apple_logo.svg.vec');
 
-  /// File path: assets/images/logos/facebook_logo.svg
+  /// Directory path: assets/images/icons/bold
+  $AssetsImagesIconsBoldGen get bold => const $AssetsImagesIconsBoldGen();
+
+  /// File path: assets/images/icons/facebook_logo.svg
   SvgGenImage get facebookLogo =>
-      const SvgGenImage('assets/images/logos/facebook_logo.svg');
+      const SvgGenImage('assets/images/icons/facebook_logo.svg');
 
-  /// File path: assets/images/logos/facebook_logo.svg.vec
+  /// File path: assets/images/icons/facebook_logo.svg.vec
   SvgGenImage get facebookLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/facebook_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/facebook_logo.svg.vec');
 
-  /// File path: assets/images/logos/google_logo.svg
+  /// File path: assets/images/icons/google_logo.svg
   SvgGenImage get googleLogo =>
-      const SvgGenImage('assets/images/logos/google_logo.svg');
+      const SvgGenImage('assets/images/icons/google_logo.svg');
 
-  /// File path: assets/images/logos/google_logo.svg.vec
+  /// File path: assets/images/icons/google_logo.svg.vec
   SvgGenImage get googleLogoSvg =>
-      const SvgGenImage.vec('assets/images/logos/google_logo.svg.vec');
+      const SvgGenImage.vec('assets/images/icons/google_logo.svg.vec');
 
-  /// File path: assets/images/logos/store_logo.png
+  /// Directory path: assets/images/icons/outlined
+  $AssetsImagesIconsOutlinedGen get outlined =>
+      const $AssetsImagesIconsOutlinedGen();
+
+  /// File path: assets/images/icons/store_logo.png
   AssetGenImage get storeLogo =>
-      const AssetGenImage('assets/images/logos/store_logo.png');
+      const AssetGenImage('assets/images/icons/store_logo.png');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -117,6 +127,17 @@ class $AssetsImagesOnboardingGen {
       ];
 }
 
+class $AssetsImagesProfileGen {
+  const $AssetsImagesProfileGen();
+
+  /// File path: assets/images/profile/person.png
+  AssetGenImage get person =>
+      const AssetGenImage('assets/images/profile/person.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [person];
+}
+
 class $AssetsImagesSplashGen {
   const $AssetsImagesSplashGen();
 
@@ -152,6 +173,102 @@ class $AssetsImagesSplashGen {
         fruitHubSplashSvg,
         plantOnboard,
         plantOnboardSvg
+      ];
+}
+
+class $AssetsImagesIconsBoldGen {
+  const $AssetsImagesIconsBoldGen();
+
+  /// File path: assets/images/icons/bold/home.svg
+  SvgGenImage get home =>
+      const SvgGenImage('assets/images/icons/bold/home.svg');
+
+  /// File path: assets/images/icons/bold/home.svg.vec
+  SvgGenImage get homeSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/home.svg.vec');
+
+  /// File path: assets/images/icons/bold/products.svg
+  SvgGenImage get products =>
+      const SvgGenImage('assets/images/icons/bold/products.svg');
+
+  /// File path: assets/images/icons/bold/products.svg.vec
+  SvgGenImage get productsSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/products.svg.vec');
+
+  /// File path: assets/images/icons/bold/shopping-cart.svg
+  SvgGenImage get shoppingCart =>
+      const SvgGenImage('assets/images/icons/bold/shopping-cart.svg');
+
+  /// File path: assets/images/icons/bold/shopping-cart.svg.vec
+  SvgGenImage get shoppingCartSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/shopping-cart.svg.vec');
+
+  /// File path: assets/images/icons/bold/user.svg
+  SvgGenImage get user =>
+      const SvgGenImage('assets/images/icons/bold/user.svg');
+
+  /// File path: assets/images/icons/bold/user.svg.vec
+  SvgGenImage get userSvg =>
+      const SvgGenImage.vec('assets/images/icons/bold/user.svg.vec');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        home,
+        homeSvg,
+        products,
+        productsSvg,
+        shoppingCart,
+        shoppingCartSvg,
+        user,
+        userSvg
+      ];
+}
+
+class $AssetsImagesIconsOutlinedGen {
+  const $AssetsImagesIconsOutlinedGen();
+
+  /// File path: assets/images/icons/outlined/home.svg
+  SvgGenImage get home =>
+      const SvgGenImage('assets/images/icons/outlined/home.svg');
+
+  /// File path: assets/images/icons/outlined/home.svg.vec
+  SvgGenImage get homeSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/home.svg.vec');
+
+  /// File path: assets/images/icons/outlined/products.svg
+  SvgGenImage get products =>
+      const SvgGenImage('assets/images/icons/outlined/products.svg');
+
+  /// File path: assets/images/icons/outlined/products.svg.vec
+  SvgGenImage get productsSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/products.svg.vec');
+
+  /// File path: assets/images/icons/outlined/shopping-cart.svg
+  SvgGenImage get shoppingCart =>
+      const SvgGenImage('assets/images/icons/outlined/shopping-cart.svg');
+
+  /// File path: assets/images/icons/outlined/shopping-cart.svg.vec
+  SvgGenImage get shoppingCartSvg => const SvgGenImage.vec(
+      'assets/images/icons/outlined/shopping-cart.svg.vec');
+
+  /// File path: assets/images/icons/outlined/user.svg
+  SvgGenImage get user =>
+      const SvgGenImage('assets/images/icons/outlined/user.svg');
+
+  /// File path: assets/images/icons/outlined/user.svg.vec
+  SvgGenImage get userSvg =>
+      const SvgGenImage.vec('assets/images/icons/outlined/user.svg.vec');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        home,
+        homeSvg,
+        products,
+        productsSvg,
+        shoppingCart,
+        shoppingCartSvg,
+        user,
+        userSvg
       ];
 }
 

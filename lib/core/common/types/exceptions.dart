@@ -4,5 +4,14 @@ class AuthException implements Exception {
   AuthException({required this.message});
 
   @override
-  String toString() => 'CustomException: $message';
+  String toString() => 'AuthException: $message';
+}
+
+class RemoteStorgeException implements Exception {
+  final String message;
+
+  RemoteStorgeException({required this.message});
+
+  @override
+  String toString() => 'RemoteStorgeException: $message';
 }

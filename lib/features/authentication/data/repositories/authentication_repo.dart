@@ -1,20 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/common/services/authentication/authentication_service.dart';
+import 'package:fruits_hub/core/common/services/remote_storage/storage_service.dart';
 import 'package:fruits_hub/core/common/types/errors.dart';
 import 'package:fruits_hub/core/common/types/exceptions.dart';
 import 'package:fruits_hub/core/common/types/result.dart';
 
-import 'package:fruits_hub/features/authentication/domain/entities/user_entity.dart';
-
 import '../../domain/repositories/auth_repo.dart';
-import '../models/user_model.dart';
+import '../models/user_account.dart';
 
-class AuthenticationRepositoryImpl implements AuthenticationRepository {
-  final AuthenticationService authService;
+class AuthenticationRepositoryImpl<ServiceUser extends User> implements AuthenticationRepository {
+  final AuthenticationService<ServiceUser> authService;
+  final RemoteNoSqlStorageService<UserAccount> remoteLocalService;
 
-  AuthenticationRepositoryImpl(this.authService);
+  AuthenticationRepositoryImpl(this.authService, this.remoteLocalService);
 
   @override
-  Future<Result<UserEntity>> signInWithEmailAndPassword({
+  FutureResult<UserAccount> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -23,7 +24,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(user));
+      return Right(UserAccount.fromFirebaseUser(user));
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {
@@ -32,13 +33,17 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<void>> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  FutureResult<void> signOut() async {
+    try {
+      await authService.signOut();
+      return const Right(null);
+    } on Exception {
+      return Left(AuthenticationFailure(message: 'Something went wrong, please try again later.'));
+    }
   }
 
   @override
-  Future<Result<UserEntity>> signUpWithEmailAndPassword({
+  Future<Result<UserAccount>> signUpWithEmailAndPassword({
     required String name,
     required String email,
     required String password,
@@ -48,19 +53,29 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFirebaseUser(newUser));
+      final userAcc = UserAccount.fromFirebaseUser(newUser).copyWith(name: name);
+
+      await remoteLocalService.saveNewRecord(userAcc);
+
+      return Right(userAcc);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
+    } on RemoteStorgeException catch (e) {
+      await authService.deleteAccount(); // delete the user from firebase if the user creation fails
+      return Left(RemoteStorageFailure(message: e.message));
     } catch (e) {
       return Left(ServerFailure(message: 'Unknown error'));
     }
   }
 
   @override
-  Future<Result<UserEntity>> signInWithGoogle() async {
+  Future<Result<UserAccount>> signInWithGoogle() async {
     try {
       final newUser = await authService.signInWithGoogle();
-      return Right(UserModel.fromFirebaseUser(newUser));
+      final userAcc = UserAccount.fromFirebaseUser(newUser);
+      final userExists = await remoteLocalService.getRecordById(newUser.uid);
+      if (userExists != null) await remoteLocalService.saveNewRecord(userAcc);
+      return Right(userAcc);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {
@@ -69,10 +84,22 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Result<UserEntity>> signInWithFacebook() async {
+  Future<Result<UserAccount>> signInWithFacebook() async {
     try {
       final newUser = await authService.signInWithFacebook();
-      return Right(UserModel.fromFirebaseUser(newUser));
+      return Right(UserAccount.fromFirebaseUser(newUser));
+    } on AuthException catch (e) {
+      return Left(AuthenticationFailure(message: e.message));
+    } catch (e) {
+      return Left(ServerFailure(message: 'Unknown error'));
+    }
+  }
+
+  @override
+  FutureResult<String?> get userTok async {
+    try {
+      final userToken = await authService.userTok;
+      return Right(userToken);
     } on AuthException catch (e) {
       return Left(AuthenticationFailure(message: e.message));
     } catch (e) {

@@ -11,3 +11,7 @@ final class ServerFailure extends Failure {
 final class AuthenticationFailure extends Failure {
   AuthenticationFailure({required super.message});
 }
+
+final class RemoteStorageFailure extends Failure {
+  RemoteStorageFailure({required super.message});
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/authentication/presentation/view/login_view.dart';
 import 'package:fruits_hub/features/onboarding/models/page_content.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -38,7 +39,7 @@ class OnBoardingPage extends StatelessWidget {
               Visibility(
                 visible: pageIndex == 0,
                 child: GestureDetector(
-                  onTap: () => Navigator.of(context).pushReplacementNamed(LoginView.routeName),
+                  onTap: () => context.pushReplacementNamed(LoginView.routePath),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text('تـخط', style: Theme.of(context).textTheme.bodyMedium),
